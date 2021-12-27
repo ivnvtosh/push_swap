@@ -1,0 +1,13 @@
+.DS_Store
+.vscode
+.idea
+test-1
+test-2
+test-3
+test-4
+*.dSYM
+*.gch
+*.swp
+*.out
+*.o
+*.a
