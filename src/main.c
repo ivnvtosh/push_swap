@@ -18,9 +18,9 @@ void	ft_exit(const char *s, int code);
 int	main(int argc, char **argv)
 {
 	if (argc == 1)
-		ft_exit("Error: please, enter the parameters.", -1);
+		ft_exit("Error: please, enter the numbers.", -1);
 	if (argc == 2)
-		ft_exit("Error: please, enter more parameters.", -1);
+		ft_exit("Error: please, enter more numbers.", -1);
 	push_swap(--argc, ++argv);
 	return (0);
 }

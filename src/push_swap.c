@@ -12,20 +12,10 @@
 
 #include "../libft/libft.h"
 #include "push_swap.h"
-#include <stdio.h>
 
 t_stack	*parser_a(char **argv);
 t_stack	*parser_b(int argc);
 void	stack_print(t_stack *stack_a, t_stack *stack_b);
-
-void	swap(int *a, int *b)
-{
-	int	c;
-
-	c = *a;
-	*a = *b;
-	*b = c;
-}
 
 void	sa(t_stack *stack)
 {
@@ -33,7 +23,7 @@ void	sa(t_stack *stack)
 
 	temp = stack;
 	temp = temp->next;
-	swap(&stack->cell, &temp->cell);
+	ft_swap(&stack->cell, &temp->cell);
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
@@ -47,14 +37,19 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 		stack_a = stack_a->next;
 	while (stack_a != start && stack_a->cell == 0)
 		stack_a = stack_a->next;
-	if (stack_a->cell == 0 &
-	& stack_a == start)
+	if (stack_a->cell == 0 && stack_a == start)
 		return ;
 	stack_b = stack_b->prev;
 	while (stack_b != end && stack_b->cell)
 		stack_b = stack_b->prev;
 	stack_b->cell = stack_a->cell;
 	stack_a->cell = 0;
+}
+
+void	ra(t_stack *stack_a, t_stack *stack_b)
+{
+	(void)stack_a;
+	(void)stack_b;
 }
 
 void	push_swap(int argc, char **argv)
@@ -66,14 +61,7 @@ void	push_swap(int argc, char **argv)
 	stack_b = parser_b(argc);
 	stack_print(stack_a, stack_b);
 	// sa(stack_a);
-	pb(stack_a, stack_b);
-	stack_print(stack_a, stack_b);
-	pb(stack_a, stack_b);
-	stack_print(stack_a, stack_b);
-	pb(stack_a, stack_b);
-	stack_print(stack_a, stack_b);
-	pb(stack_a, stack_b);
-	stack_print(stack_a, stack_b);
-	pb(stack_a, stack_b);
+	// pb(stack_a, stack_b);
+	ra(stack_a, stack_b);
 	stack_print(stack_a, stack_b);
 }

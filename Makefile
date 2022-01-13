@@ -18,7 +18,8 @@ LIBFT		=	libft/libft.a
 SRCS		=	src/main.c			\
 				src/push_swap.c		\
 				src/ft_exit.c		\
-				src/parser.c		\
+				src/parser_a.c		\
+				src/parser_b.c		\
 				src/stack_print.c
 
 SRCS_B		=
