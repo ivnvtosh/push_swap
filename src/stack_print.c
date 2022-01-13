@@ -15,11 +15,11 @@
 
 void	lol(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack_a->cell)
+	if (stack_a->cont)
 		printf("%d ", stack_a->cell);
 	else
 		printf("  ");
-	if (stack_b->cell)
+	if (stack_b->cont)
 		printf("%d\n", stack_b->cell);
 	else
 		printf("\n");

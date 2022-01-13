@@ -17,6 +17,9 @@
 void	ft_exit(const char *s, int code)
 {
 	ft_putstr_fd("\x1b[31m", 1);
+	ft_putstr_fd("Error: ", 1);
+	if (code == -1)
+		ft_putstr_fd("please, ", 1);
 	ft_putstr_fd(s, 1);
 	ft_putstr_fd("\x1b[0m\n", 1);
 	exit(code);
@@ -34,5 +37,5 @@ void	stack_clear(t_stack *stack, const char *s)
 		stack = stack->next;
 		free(temp);
 	}
-	ft_exit(s, -1);
+	ft_exit(s, -2);
 }

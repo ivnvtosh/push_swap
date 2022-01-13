@@ -23,21 +23,19 @@ t_stack	*parser_b(int argc)
 	t_stack	*start;
 	t_stack	*temp;
 
-	stack = (t_stack *)malloc(sizeof(t_stack));
+	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (stack == NULL)
-		ft_exit("Error: memory allocation failure.", -1);
-	stack->cell = 0;
+		ft_exit("Error: memory allocation failure.", -2);
 	start = stack;
 	argc -= 1;
 	while (argc)
 	{
-		stack->next = (t_stack *)malloc(sizeof(t_stack));
+		stack->next = (t_stack *)ft_calloc(1, sizeof(t_stack));
 		if (stack->next == NULL)
 			stack_clear(start, "Error: memory allocation failure.");
 		temp = stack;
 		stack = stack->next;
 		stack->prev = temp;
-		stack->cell = 0;
 		argc -= 1;
 	}
 	stack->next = start;

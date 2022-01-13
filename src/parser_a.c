@@ -26,18 +26,20 @@ t_stack	*get_stack(char **argv)
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
-		ft_exit("Error: memory allocation failure.", -1);
+		ft_exit("memory allocation failure.", -2);
 	stack->cell = ft_atoi(*argv++);
+	stack->cont = 1;
 	start = stack;
 	while (*argv)
 	{
 		stack->next = (t_stack *)malloc(sizeof(t_stack));
 		if (stack->next == NULL)
-			stack_clear(start, "Error: memory allocation failure.");
+			stack_clear(start, "memory allocation failure.");
 		temp = stack;
 		stack = stack->next;
 		stack->prev = temp;
 		stack->cell = ft_atoi(*argv++);
+		stack->cont = 1;
 	}
 	stack->next = start;
 	start->prev = stack;
@@ -57,10 +59,10 @@ void	check(char **argv)
 		while (ft_isdigit((*argv)[i]))
 			i++;
 		if ((*argv)[i])
-			ft_exit("Error: please, enter only numbers.", -1);
+			ft_exit("enter only numbers.", -1);
 		n = ft_atoll(*argv);
 		if (n < INT_MIN || n > INT_MAX)
-			ft_exit("Error: please, enter a number in the integer range.", -1);
+			ft_exit("enter a number in the integer range.", -1);
 		argv++;
 	}
 }
@@ -79,7 +81,7 @@ void	duplicates(t_stack *stack)
 		while (stack != start)
 		{
 			if (temp->cell == stack->cell)
-				stack_clear(start, "Error: please, enter non-repeating numbers.");
+				stack_clear(start, "enter non-repeating numbers.");
 			stack = stack->next;
 		}
 		stack = temp;
@@ -102,7 +104,7 @@ void	sorted(t_stack *stack)
 		temp = temp->next;
 	}
 	if (temp == start)
-		ft_exit("Error: please, enter an unsorted numbers.", -1);
+		ft_exit("enter an unsorted numbers.", -1);
 }
 
 t_stack	*parser_a(char **argv)
