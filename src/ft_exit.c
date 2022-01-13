@@ -27,15 +27,18 @@ void	ft_exit(const char *s, int code)
 
 void	stack_clear(t_stack *stack, const char *s)
 {
-	t_stack	*start;
-	t_stack	*temp;
+	t_stack	*elem_first;
+	t_stack	*elem_prev;
 
-	start = stack;
-	while (stack != start)
+	elem_first = stack;
+	elem_prev = stack;
+	stack = stack->next;
+	free(elem_prev);
+	while (stack != elem_first)
 	{
-		temp = stack;
+		elem_prev = stack;
 		stack = stack->next;
-		free(temp);
+		free(elem_prev);
 	}
 	ft_exit(s, -2);
 }

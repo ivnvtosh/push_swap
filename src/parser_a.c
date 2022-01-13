@@ -21,29 +21,27 @@ void	stack_clear(t_stack *stack, const char *s);
 t_stack	*get_stack(char **argv)
 {
 	t_stack	*stack;
-	t_stack	*start;
-	t_stack	*temp;
+	t_stack	*elem_first;
+	t_stack	*elem_prev;
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
 		ft_exit("memory allocation failure.", -2);
 	stack->cell = ft_atoi(*argv++);
-	stack->cont = 1;
-	start = stack;
+	elem_first = stack;
 	while (*argv)
 	{
 		stack->next = (t_stack *)malloc(sizeof(t_stack));
 		if (stack->next == NULL)
-			stack_clear(start, "memory allocation failure.");
-		temp = stack;
+			stack_clear(elem_first, "memory allocation failure.");
+		elem_prev = stack;
 		stack = stack->next;
-		stack->prev = temp;
+		stack->prev = elem_prev;
 		stack->cell = ft_atoi(*argv++);
-		stack->cont = 1;
 	}
-	stack->next = start;
-	start->prev = stack;
-	return (start);
+	stack->next = elem_first;
+	elem_first->prev = stack;
+	return (elem_first);
 }
 
 void	check(char **argv)
@@ -69,41 +67,38 @@ void	check(char **argv)
 
 void	duplicates(t_stack *stack)
 {
-	t_stack	*start;
-	t_stack	*temp;
+	t_stack	*elem_first;
+	t_stack	*elem_prev;
 
-	start = stack;
-	temp = NULL;
-	while (temp != start)
+	elem_first = stack;
+	elem_prev = NULL;
+	while (elem_prev != elem_first)
 	{
-		temp = stack;
+		elem_prev = stack;
 		stack = stack->next;
-		while (stack != start)
+		while (stack != elem_first)
 		{
-			if (temp->cell == stack->cell)
-				stack_clear(start, "enter non-repeating numbers.");
+			if (elem_prev->cell == stack->cell)
+				stack_clear(elem_first, "enter non-repeating numbers.");
 			stack = stack->next;
 		}
-		stack = temp;
-		stack = stack->next;
-		temp = stack;
+		stack = elem_prev->next;
 	}
 }
 
 void	sorted(t_stack *stack)
 {
-	t_stack	*start;
-	t_stack	*temp;
+	t_stack	*elem_first;
+	t_stack	*elem_next;
 
-	start = stack;
-	temp = stack;
-	temp = temp->next;
-	while (temp != start && stack->cell < temp->cell)
+	elem_first = stack;
+	elem_next = stack->next;
+	while (elem_next != elem_first && stack->cell < elem_next->cell)
 	{
 		stack = stack->next;
-		temp = temp->next;
+		elem_next = elem_next->next;
 	}
-	if (temp == start)
+	if (elem_next == elem_first)
 		ft_exit("enter an unsorted numbers.", -1);
 }
 
