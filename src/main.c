@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 18:14:45 by ccamie            #+#    #+#             */
-/*   Updated: 2021/10/19 18:14:51 by ccamie           ###   ########.fr       */
+/*   Created: 2021/12/26 12:59:08 by ccamie            #+#    #+#             */
+/*   Updated: 2021/12/26 12:59:10 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../libft/libft.h"
 
-typedef struct s_list
+void	push_swap(int argc, char **argv);
+void	ft_exit(const char *s, int code);
+
+int	main(int argc, char **argv)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*tab;
-
-	tab = (t_list *)malloc(sizeof(t_list));
-	if (tab == NULL)
-		return (NULL);
-	tab->content = content;
-	tab->next = NULL;
-	return (tab);
+	if (argc == 1)
+		ft_exit("Error: please, enter the parameters.", -1);
+	if (argc == 2)
+		ft_exit("Error: please, enter more parameters.", -1);
+	push_swap(--argc, ++argv);
+	return (0);
 }

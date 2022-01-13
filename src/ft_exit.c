@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 18:14:45 by ccamie            #+#    #+#             */
-/*   Updated: 2021/10/19 18:14:51 by ccamie           ###   ########.fr       */
+/*   Created: 2022/01/13 05:18:25 by ccamie            #+#    #+#             */
+/*   Updated: 2022/01/13 05:18:26 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../libft/libft.h"
+#include "push_swap.h"
 #include <stdlib.h>
 
-typedef struct s_list
+void	ft_exit(const char *s, int code)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	ft_putstr_fd("\x1b[31m", 1);
+	ft_putstr_fd(s, 1);
+	ft_putstr_fd("\x1b[0m\n", 1);
+	exit(code);
+}
 
-t_list	*ft_lstnew(void *content)
+void	stack_clear(t_stack *stack, const char *s)
 {
-	t_list	*tab;
+	t_stack	*start;
+	t_stack	*temp;
 
-	tab = (t_list *)malloc(sizeof(t_list));
-	if (tab == NULL)
-		return (NULL);
-	tab->content = content;
-	tab->next = NULL;
-	return (tab);
+	start = stack;
+	while (stack != start)
+	{
+		temp = stack;
+		stack = stack->next;
+		free(temp);
+	}
+	ft_exit(s, -1);
 }

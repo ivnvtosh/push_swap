@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/26 12:59:08 by ccamie            #+#    #+#             */
-/*   Updated: 2021/12/26 12:59:10 by ccamie           ###   ########.fr       */
+/*   Created: 2022/01/13 06:38:00 by ccamie            #+#    #+#             */
+/*   Updated: 2022/01/13 06:38:04 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+int		ft_isdigit(int c);
 
-int	push_swap(int argc, char **argv);
-
-int	main(int argc, char **argv)
+long long	ft_atoll(const char *s)
 {
-	int	error;
+	long long	n;
+	int			sign;
 
-	if (argc == 1)
-		return (-1);
-	error = push_swap(--argc, ++argv);
-	if (error == -1)
-		ft_putendl_fd("Error", 1);
-	return (error);
+	n = 0;
+	sign = 1;
+	while (*s == 32 || (*s >= 9 && *s <= 13))
+		s++;
+	if (*s == 43 || *s == 45)
+		if (*s++ == 45)
+			sign = -1;
+	while (ft_isdigit(*s))
+		n = n * 10 + *s++ - 48;
+	return (n * sign);
 }
