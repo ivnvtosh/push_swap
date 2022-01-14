@@ -30,8 +30,8 @@ void	stack_push(t_stack **stack_from, t_stack **stack_in)
 	}
 	if (*stack_in == NULL)
 	{
-		elem->next = NULL;
-		elem->prev = NULL;
+		elem->next = elem;
+		elem->prev = elem;
 	}
 	else if ((*stack_in)->next == NULL)
 	{

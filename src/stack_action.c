@@ -88,5 +88,5 @@ void	stack_action(t_stack **stack_a, t_stack **stack_b, const char *s)
 		check_reverse_rotate(stack_a, stack_b, *(s + 2));
 	else
 		error_3(*stack_a, *stack_b, "u r invalid! action.");
-	stack_print(*stack_a, *stack_b);
+	// stack_print(*stack_a, *stack_b);
 }

@@ -15,7 +15,7 @@
 
 t_stack	*parser_a(char **argv);
 void	stack_print(t_stack *stack_a, t_stack *stack_b);
-void	manual_algorithm(t_stack **stack_a, t_stack **stack_b, int argc);
+void	manual_sorting(t_stack **stack_a, t_stack **stack_b, int argc);
 
 void	push_swap(int argc, char **argv)
 {
@@ -24,7 +24,7 @@ void	push_swap(int argc, char **argv)
 
 	stack_a = parser_a(argv);
 	stack_b = NULL;
-	stack_print(stack_a, stack_b);
+	// stack_print(stack_a, stack_b);
 	if (argc < 6)
-		manual_algorithm(&stack_a, &stack_b, argc);
+		manual_sorting(&stack_a, &stack_b, argc);
 }

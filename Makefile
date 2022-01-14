@@ -15,16 +15,16 @@ HEADER		=	src/push_swap.h
 
 LIBFT		=	libft/libft.a
 
-SRCS		=	src/error.c				\
-				src/main.c				\
-				src/manual_algorithm.c	\
-				src/parser_a.c			\
-				src/push_swap.c			\
-				src/stack_action.c		\
-				src/stack_print.c		\
-				src/stack_push.c		\
-				src/stack_rotate.c		\
-				src/stack_swap.c		\
+SRCS		=	src/error.c			\
+				src/main.c			\
+				src/manual_sorting.c\
+				src/parser_a.c		\
+				src/push_swap.c		\
+				src/stack_action.c	\
+				src/stack_print.c	\
+				src/stack_push.c	\
+				src/stack_rotate.c	\
+				src/stack_swap.c	\
 				src/stack_utils.c
 				
 
