@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_swap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/26 12:59:08 by ccamie            #+#    #+#             */
-/*   Updated: 2021/12/26 12:59:10 by ccamie           ###   ########.fr       */
+/*   Created: 2022/01/14 08:19:12 by ccamie            #+#    #+#             */
+/*   Updated: 2022/01/14 08:20:23 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
+#include "push_swap.h"
 
-void	push_swap(int argc, char **argv);
-void	error(const char *s, int code);
+int	stack_len(t_stack *stack);
 
-int	main(int argc, char **argv)
+void	stack_swap(t_stack *stack)
 {
-	if (argc == 1)
-		error("enter the numbers.", -1);
-	if (argc == 2)
-		error("enter more numbers.", -1);
-	push_swap(--argc, ++argv);
-	return (0);
+	if (stack == NULL || stack->next == NULL)
+		return ;
+	ft_swap(&stack->cell, &stack->next->cell);
 }

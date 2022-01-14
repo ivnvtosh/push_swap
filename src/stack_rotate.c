@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/26 12:59:08 by ccamie            #+#    #+#             */
-/*   Updated: 2021/12/26 12:59:10 by ccamie           ###   ########.fr       */
+/*   Created: 2022/01/14 09:17:02 by ccamie            #+#    #+#             */
+/*   Updated: 2022/01/14 09:17:05 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
+#include "push_swap.h"
 
-void	push_swap(int argc, char **argv);
-void	error(const char *s, int code);
-
-int	main(int argc, char **argv)
+void	stack_rotate(t_stack **stack)
 {
-	if (argc == 1)
-		error("enter the numbers.", -1);
-	if (argc == 2)
-		error("enter more numbers.", -1);
-	push_swap(--argc, ++argv);
-	return (0);
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
+	*stack = (*stack)->next;
+}
+
+void	stack_reverse_rotate(t_stack **stack)
+{
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
+	*stack = (*stack)->prev;
 }

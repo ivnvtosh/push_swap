@@ -13,38 +13,32 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-void	lol(t_stack *stack_a, t_stack *stack_b)
-{
-	if (stack_a)
-		printf("%d ", stack_a->cell);
-	else
-		printf("  ");
-	if (stack_b)
-		printf("%d\n", stack_b->cell);
-	else
-		printf("\n");
-}
+int	stack_len(t_stack *stack);
 
 void	stack_print(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack	*start;
+	int	a;
+	int	b;
 
-	printf("\x1b[46m   \x1b[0m\n");
-	start = stack_a;
-	lol(stack_a, stack_b);
-	if (stack_a)
-		stack_a = stack_a->next;
-	if (stack_b)
-		stack_b = stack_b->next;
-	while (stack_a != start)
+	a = stack_len(stack_a);
+	b = stack_len(stack_b);
+	printf("\x1b[4m         \n");
+	while (a > 0 || b > 0)
 	{
-		lol(stack_a, stack_b);
-		if (stack_a)
+		if (a-- > 0)
+		{
+			printf("|%3d|", stack_a->cell);
 			stack_a = stack_a->next;
-		if (stack_b)
+		}
+		else
+			printf("|   |");
+		if (b-- > 0)
+		{
+			printf("%3d|\n", stack_b->cell);
 			stack_b = stack_b->next;
+		}
+		else
+			printf("   |\n");
 	}
-	printf("_ _\n");
-	printf("a b\n");
-	printf("\x1b[46m   \x1b[0m\n");
+	printf("| a | b |\n\x1b[0m\n");
 }

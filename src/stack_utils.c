@@ -1,30 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/25 18:14:25 by ccamie            #+#    #+#             */
-/*   Updated: 2021/12/25 18:14:28 by ccamie           ###   ########.fr       */
+/*   Created: 2022/01/14 08:19:43 by ccamie            #+#    #+#             */
+/*   Updated: 2022/01/14 08:19:47 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "push_swap.h"
+#include <stdlib.h>
 
-t_stack	*parser_a(char **argv);
-void	stack_print(t_stack *stack_a, t_stack *stack_b);
-void	manual_algorithm(t_stack **stack_a, t_stack **stack_b, int argc);
-
-void	push_swap(int argc, char **argv)
+void	stack_clear(t_stack *stack)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	if (stack == NULL)
+		return ;
+	stack->prev->next = NULL;
+	while (stack->next)
+	{
+		stack = stack->next;
+		free(stack->prev);
+	}
+	free(stack);
+}
 
-	stack_a = parser_a(argv);
-	stack_b = NULL;
-	stack_print(stack_a, stack_b);
-	if (argc < 6)
-		manual_algorithm(&stack_a, &stack_b, argc);
+int	stack_len(t_stack *stack)
+{
+	t_stack	*elem_first;
+	int		i;
+
+	if (stack == NULL)
+		return (0);
+	if (stack->next == NULL)
+		return (1);
+	elem_first = stack;
+	i = 0;
+	while (stack->next != elem_first)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (++i);
 }
