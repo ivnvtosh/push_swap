@@ -17,7 +17,6 @@ void	stack_swap(t_stack *stack);
 void	stack_push(t_stack **stack_from, t_stack **stack_in);
 void	stack_rotate(t_stack **stack);
 void	stack_reverse_rotate(t_stack **stack);
-void	error_3(t_stack *stack_a, t_stack *stack_b, const char *s);
 void	stack_print(t_stack *stack_a, t_stack *stack_b);
 
 void	check_swap(t_stack **stack_a, t_stack **stack_b, char c)
@@ -31,8 +30,6 @@ void	check_swap(t_stack **stack_a, t_stack **stack_b, char c)
 		stack_swap(*stack_a);
 		stack_swap(*stack_b);
 	}
-	else
-		error_3(*stack_a, *stack_b, "u r invalid! action.");
 }
 
 void	check_push(t_stack **stack_a, t_stack **stack_b, char c)
@@ -41,8 +38,6 @@ void	check_push(t_stack **stack_a, t_stack **stack_b, char c)
 		stack_push(stack_b, stack_a);
 	else if (c == 'b')
 		stack_push(stack_a, stack_b);
-	else
-		error_3(*stack_a, *stack_b, "u r invalid! action.");
 }
 
 void	check_rotate(t_stack **stack_a, t_stack **stack_b, char c)
@@ -56,8 +51,6 @@ void	check_rotate(t_stack **stack_a, t_stack **stack_b, char c)
 		stack_rotate(stack_a);
 		stack_rotate(stack_b);
 	}
-	else
-		error_3(*stack_a, *stack_b, "u r invalid! action.");
 }
 
 void	check_reverse_rotate(t_stack **stack_a, t_stack **stack_b, char c)
@@ -71,8 +64,6 @@ void	check_reverse_rotate(t_stack **stack_a, t_stack **stack_b, char c)
 		stack_reverse_rotate(stack_a);
 		stack_reverse_rotate(stack_b);
 	}
-	else
-		error_3(*stack_a, *stack_b, "u r invalid! action.");
 }
 
 void	stack_action(t_stack **stack_a, t_stack **stack_b, const char *s)
@@ -86,7 +77,4 @@ void	stack_action(t_stack **stack_a, t_stack **stack_b, const char *s)
 		check_rotate(stack_a, stack_b, *(s + 1));
 	else if (*s == 'r')
 		check_reverse_rotate(stack_a, stack_b, *(s + 2));
-	else
-		error_3(*stack_a, *stack_b, "u r invalid! action.");
-	// stack_print(*stack_a, *stack_b);
 }

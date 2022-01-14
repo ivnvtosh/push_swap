@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   terminate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,24 +16,16 @@
 
 void	stack_clear(t_stack *stack);
 
-void	error(const char *s, int code)
+void	leave(int code)
 {
-	ft_putstr_fd("\x1b[31m", 1);
-	ft_putstr_fd("Error: ", 1);
-	ft_putstr_fd(s, 1);
-	ft_putstr_fd("\x1b[0m\n", 1);
+	if (code)
+		ft_putstr_fd("Error\n", 1);
 	exit(code);
 }
 
-void	error_2(t_stack *stack, const char *s)
-{
-	stack_clear(stack);
-	error(s, -2);
-}
-
-void	error_3(t_stack *stack_a, t_stack *stack_b, const char *s)
+void	terminate(t_stack *stack_a, t_stack *stack_b, int code)
 {
 	stack_clear(stack_a);
 	stack_clear(stack_b);
-	error(s, -3);
+	leave(code);
 }

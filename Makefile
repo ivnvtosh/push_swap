@@ -15,7 +15,7 @@ HEADER		=	src/push_swap.h
 
 LIBFT		=	libft/libft.a
 
-SRCS		=	src/error.c			\
+SRCS		=	src/terminate.c		\
 				src/main.c			\
 				src/manual_sorting.c\
 				src/parser_a.c		\

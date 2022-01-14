@@ -13,14 +13,14 @@
 #include "../libft/libft.h"
 
 void	push_swap(int argc, char **argv);
-void	error(const char *s, int code);
+void	leave(int code);
 
 int	main(int argc, char **argv)
 {
 	if (argc == 1)
-		error("enter the numbers.", -1);
+		return (1);
 	if (argc == 2)
-		error("enter more numbers.", -1);
+		leave(1);
 	push_swap(--argc, ++argv);
 	return (0);
 }
