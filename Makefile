@@ -18,7 +18,7 @@ LIBFT		=	libft/libft.a
 SRCS		=	src/terminate.c		\
 				src/main.c			\
 				src/manual_sorting.c\
-				src/parser_a.c		\
+				src/parser.c		\
 				src/push_swap.c		\
 				src/stack_action.c	\
 				src/stack_print.c	\

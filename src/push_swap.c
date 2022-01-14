@@ -13,7 +13,7 @@
 #include "../libft/libft.h"
 #include "push_swap.h"
 
-t_stack	*parser_a(char **argv);
+t_stack	*parser(int *argc, char **argv);
 void	stack_print(t_stack *stack_a, t_stack *stack_b);
 void	manual_sorting(t_stack **stack_a, t_stack **stack_b, int argc);
 void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
@@ -23,7 +23,7 @@ void	push_swap(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	stack_a = parser_a(argv);
+	stack_a = parser(&argc, argv);
 	stack_b = NULL;
 	if (argc < 6)
 		manual_sorting(&stack_a, &stack_b, argc);

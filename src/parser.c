@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_a.c                                         :+:      :+:    :+:   */
+/*   parser.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -65,7 +65,7 @@ void	check(char **argv)
 	}
 }
 
-void	duplicates(t_stack *stack)
+void	duplicates_sorted(t_stack *stack)
 {
 	t_stack	*elem_first;
 	t_stack	*elem_prev;
@@ -83,26 +83,40 @@ void	duplicates(t_stack *stack)
 		}
 		stack = elem_prev->next;
 	}
-}
-
-void	sorted(t_stack *stack)
-{
-	t_stack	*elem_first;
-
-	elem_first = stack;
+	stack = elem_first;
 	while (stack->next != elem_first && stack->cell < stack->next->cell)
 		stack = stack->next;
 	if (stack->next == elem_first)
 		terminate(elem_first, NULL, 0);
 }
 
-t_stack	*parser_a(char **argv)
+
+char	**get_argv(int *argc, char **argv)
+{
+	char	**parm;
+	int		i;
+
+	parm = ft_split(*argv, 32);
+	if (parm == NULL)
+		leave(2);
+	i = 0;
+	while (parm[i])
+		i++;
+	*argc = i;
+	return (parm);
+}
+
+t_stack	*parser(int *argc, char **argv)
 {
 	t_stack	*stack;
+	char	**lol;
 
-	check(argv);
-	stack = get_stack(argv);
-	duplicates(stack);
-	sorted(stack);
+	if (*argc == 1)
+		lol = get_argv(argc, argv);
+	else
+		lol = argv;
+	check(lol);
+	stack = get_stack(lol);
+	duplicates_sorted(stack);
 	return (stack);
 }

@@ -18,7 +18,8 @@ void	stack_clear(t_stack *stack)
 {
 	if (stack == NULL)
 		return ;
-	stack->prev->next = NULL;
+	if (stack->prev)
+		stack->prev->next = NULL;
 	while (stack->next)
 	{
 		stack = stack->next;
@@ -34,7 +35,7 @@ int	stack_len(t_stack *stack)
 
 	if (stack == NULL)
 		return (0);
-	if (stack->next == NULL)
+	if (stack == stack->next)
 		return (1);
 	elem_first = stack;
 	i = 0;
