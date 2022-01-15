@@ -18,7 +18,28 @@
 void	leave(int code);
 void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
 
-t_stack	*get_stack(char **argv)
+void	check(char **argv)
+{
+	long long	n;
+	int			i;
+
+	while (*argv)
+	{
+		i = 0;
+		if ((*argv)[i] == '-')
+			i++;
+		while (ft_isdigit((*argv)[i]))
+			i++;
+		if ((*argv)[i])
+			leave(1);
+		n = ft_atoll(*argv);
+		if (n < INT_MIN || n > INT_MAX)
+			leave(1);
+		argv++;
+	}
+}
+
+t_stack	*stack_allocate(char **argv)
 {
 	t_stack	*stack;
 	t_stack	*elem_first;
@@ -42,27 +63,6 @@ t_stack	*get_stack(char **argv)
 	stack->next = elem_first;
 	elem_first->prev = stack;
 	return (elem_first);
-}
-
-void	check(char **argv)
-{
-	long long	n;
-	int			i;
-
-	while (*argv)
-	{
-		i = 0;
-		if ((*argv)[i] == '-')
-			i++;
-		while (ft_isdigit((*argv)[i]))
-			i++;
-		if ((*argv)[i])
-			leave(1);
-		n = ft_atoll(*argv);
-		if (n < INT_MIN || n > INT_MAX)
-			leave(1);
-		argv++;
-	}
 }
 
 void	duplicates_sorted(t_stack *stack)
@@ -90,33 +90,41 @@ void	duplicates_sorted(t_stack *stack)
 		terminate(elem_first, NULL, 0);
 }
 
-
-char	**get_argv(int *argc, char **argv)
+t_stack	*get_stack(char **argv)
 {
-	char	**parm;
-	int		i;
+	t_stack	*stack;
 
-	parm = ft_split(*argv, 32);
-	if (parm == NULL)
-		leave(2);
-	i = 0;
-	while (parm[i])
-		i++;
-	*argc = i;
-	return (parm);
+	check(argv);
+	stack = stack_allocate(argv);
+	duplicates_sorted(stack);
+	return (stack);
 }
 
 t_stack	*parser(int *argc, char **argv)
 {
 	t_stack	*stack;
-	char	**lol;
+	char	**temp;
+	int		i;
 
 	if (*argc == 1)
-		lol = get_argv(argc, argv);
+	{
+		temp = ft_split(*argv, 32);
+		if (temp == NULL)
+			leave(2);
+		if (temp[1] == NULL)
+		{
+			free(*temp);
+			free(temp);
+			leave(1);
+		}
+		stack = get_stack(temp);
+		i = 0;
+		while (temp[i])
+			free(temp[i++]);
+		free(temp);
+		*argc = i;
+	}
 	else
-		lol = argv;
-	check(lol);
-	stack = get_stack(lol);
-	duplicates_sorted(stack);
+		stack = get_stack(argv);
 	return (stack);
 }
