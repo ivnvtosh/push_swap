@@ -45,14 +45,14 @@ $(NAME)		:	$(LIBFT) $(OBJS)
 				$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $(NAME)
 
 $(LIBFT)	:
-				make -C libft bonus
+				make -C libft
 				make -C libft clean
 
 %.o			:	%.c $(HEADER)
 				$(CC) $(CFLAGS) -c $< -o $@
 
 bonus		:	
-				@make OBJS="$(OBJS) $(OBJS_B)" all
+				@make OBJS="$(OBJS_B)" all
 
 clean		:
 				$(RM) $(OBJS) $(OBJS_B)
