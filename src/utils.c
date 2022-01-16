@@ -1,28 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_rotate.c                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 09:17:02 by ccamie            #+#    #+#             */
-/*   Updated: 2022/01/14 09:17:05 by ccamie           ###   ########.fr       */
+/*   Created: 2022/01/14 08:19:43 by ccamie            #+#    #+#             */
+/*   Updated: 2022/01/14 08:19:47 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "push_swap.h"
+#include <stdlib.h>
 
-void	stack_rotate(t_stack **stack)
+void	clear(t_stack *stack)
 {
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (stack == NULL)
 		return ;
-	*stack = (*stack)->next;
+	if (stack->prev)
+		stack->prev->next = NULL;
+	while (stack->next)
+	{
+		stack = stack->next;
+		free(stack->prev);
+	}
+	free(stack);
 }
 
-void	stack_reverse_rotate(t_stack **stack)
+int	stacklen(t_stack *stack)
 {
-	if (*stack == NULL || (*stack)->next == NULL)
-		return ;
-	*stack = (*stack)->prev;
+	t_stack	*elem_first;
+	int		i;
+
+	if (stack == NULL)
+		return (0);
+	if (stack == stack->next)
+		return (1);
+	elem_first = stack;
+	i = 0;
+	while (stack->next != elem_first)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (++i);
 }

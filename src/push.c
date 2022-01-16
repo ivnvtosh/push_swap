@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_push.c                                       :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -42,7 +42,7 @@ void	connect(t_stack *elem, t_stack **in)
 	*in = elem;
 }
 
-void	stack_push(t_stack **from, t_stack **in)
+void	push(t_stack **from, t_stack **in)
 {
 	t_stack	*elem;
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_swap.c                                       :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,9 +13,9 @@
 #include "../libft/libft.h"
 #include "push_swap.h"
 
-int	stack_len(t_stack *stack);
+int	stacklen(t_stack *stack);
 
-void	stack_swap(t_stack *stack)
+void	swap(t_stack *stack)
 {
 	if (stack == NULL || stack->next == NULL)
 		return ;

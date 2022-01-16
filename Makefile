@@ -12,20 +12,21 @@
 
 NAME		=		push_swap
 HEADER		=	src/push_swap.h
+HEADER_B	=
 
 LIBFT		=	libft/libft.a
 
-SRCS		=	src/terminate.c		\
+SRCS		=	src/action.c		\
+				src/handsorting.c	\
 				src/main.c			\
-				src/manual_sorting.c\
 				src/parser.c		\
+				src/print.c			\
 				src/push_swap.c		\
-				src/stack_action.c	\
-				src/stack_print.c	\
-				src/stack_push.c	\
-				src/stack_rotate.c	\
-				src/stack_swap.c	\
-				src/stack_utils.c
+				src/push.c			\
+				src/rotate.c		\
+				src/swap.c			\
+				src/terminate.c		\
+				src/utils.c
 				
 
 SRCS_B		=
@@ -52,7 +53,7 @@ $(LIBFT)	:
 				$(CC) $(CFLAGS) -c $< -o $@
 
 bonus		:	
-				@make OBJS="$(OBJS_B)" all
+				@make OBJS="$(OBJS_B)" HEADER="$(HEADER_B)" all
 
 clean		:
 				$(RM) $(OBJS) $(OBJS_B)

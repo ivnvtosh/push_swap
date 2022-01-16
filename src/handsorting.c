@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manual_sorting.c                                   :+:      :+:    :+:   */
+/*   handsorting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include "../libft/libft.h"
 #include "push_swap.h"
 
-void	stack_action(t_stack **stack_a, t_stack **stack_b, const char *s);
+void	action(t_stack **stack_a, t_stack **stack_b, const char *s);
 
 typedef struct s_number
 {
@@ -93,7 +93,7 @@ void	norma_1(t_number c)
 		ft_putstr_fd("rra\n", 1);
 }
 
-void	manual_sorting(t_stack **stack_a, t_stack **stack_b, int argc)
+void	handsorting(t_stack **stack_a, t_stack **stack_b, int argc)
 {
 	t_number	c;
 

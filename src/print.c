@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_print.c                                      :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,15 +13,15 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-int	stack_len(t_stack *stack);
+int	stacklen(t_stack *stack);
 
-void	stack_print(t_stack *stack_a, t_stack *stack_b)
+void	print(t_stack *stack_a, t_stack *stack_b)
 {
 	int	a;
 	int	b;
 
-	a = stack_len(stack_a);
-	b = stack_len(stack_b);
+	a = stacklen(stack_a);
+	b = stacklen(stack_b);
 	printf("\x1b[4m         \n");
 	while (a > 0 || b > 0)
 	{

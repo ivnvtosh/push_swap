@@ -14,7 +14,7 @@
 #include "push_swap.h"
 #include <stdlib.h>
 
-void	stack_clear(t_stack *stack);
+void	clear(t_stack *stack);
 
 void	leave(int code)
 {
@@ -25,7 +25,7 @@ void	leave(int code)
 
 void	terminate(t_stack *stack_a, t_stack *stack_b, int code)
 {
-	stack_clear(stack_a);
-	stack_clear(stack_b);
+	clear(stack_a);
+	clear(stack_b);
 	leave(code);
 }
