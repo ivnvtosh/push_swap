@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handsorting.c                                      :+:      :+:    :+:   */
+/*   handsort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -93,7 +93,7 @@ void	norma_1(t_number c)
 		ft_putstr_fd("rra\n", 1);
 }
 
-void	handsorting(t_stack **stack_a, t_stack **stack_b, int argc)
+void	handsort(t_stack **stack_a, t_stack **stack_b, int argc)
 {
 	t_number	c;
 

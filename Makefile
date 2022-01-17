@@ -16,16 +16,17 @@ HEADER_B	=
 
 LIBFT		=	libft/libft.a
 
-SRCS		=	src/action.c		\
-				src/handsorting.c	\
-				src/main.c			\
-				src/parser.c		\
-				src/print.c			\
-				src/push_swap.c		\
-				src/push.c			\
-				src/rotate.c		\
-				src/swap.c			\
-				src/terminate.c		\
+SRCS		=	src/action.c	\
+				src/handsort.c	\
+				src/main.c		\
+				src/parser.c	\
+				src/print.c		\
+				src/push_swap.c	\
+				src/push.c		\
+				src/quicksort.c	\
+				src/rotate.c	\
+				src/swap.c		\
+				src/terminate.c	\
 				src/utils.c
 				
 
