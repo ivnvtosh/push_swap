@@ -28,7 +28,6 @@ void	push_swap(int argc, char **argv)
 	stack_b = NULL;
 	// if (argc < 6)
 	// 	handsort(&stack_a, &stack_b, argc);
-	print(stack_a, stack_b);
 	quicksort(&stack_a, &stack_b);
 	terminate(stack_a, stack_b, 0);
 }
