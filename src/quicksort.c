@@ -100,9 +100,8 @@ void	min_back(t_stack **stack_a, t_stack **stack_b)
 	int	min;
 
 	min = get_min(*stack_a);
-	while ((*stack_a)->cell != min)
+	while ((*stack_a)->prev->cell != min)
 		action(stack_a, stack_b, "rra");
-	action(stack_a, stack_b, "ra");
 }
 
 void	min_back_b(t_stack **stack_a, t_stack **stack_b)
