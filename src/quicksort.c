@@ -138,158 +138,53 @@ void	papapapa(t_stack **stack_a, t_stack **stack_b, int count)
 	}
 }
 
-void	segment_4(t_stack **stack_a, t_stack **stack_b)
+void	recursion(t_stack **stack_a, t_stack **stack_b, int degree)
 {
-	int	degree;
+	int	copy;
 
+	if (degree < 4)	
+		return ;
+	copy = degree;
+	papapapa(stack_a, stack_b, degree);
+	while (degree >= 4)
+	{
+		polovina(stack_a, stack_b, degree);
+		min_back(stack_a, stack_b);
+		degree /= 2;
+	}
+	ft_last(stack_a, stack_b);
 	degree = 4;
-	papapapa(stack_a, stack_b, degree);
-	while (degree >= 4)
+	while (degree < copy)
 	{
-		polovina(stack_a, stack_b, degree);
-		min_back(stack_a, stack_b);
-		degree /= 2;
+		recursion(stack_a, stack_b, degree);
+		degree *= 2;
 	}
-	ft_last(stack_a, stack_b);
 }
 
-void	segment_8(t_stack **stack_a, t_stack **stack_b)
+void	lol(t_stack **stack_a, t_stack **stack_b, int degree)
 {
-	int	degree;
+	int	copy;
 
-	degree = 8;
-	papapapa(stack_a, stack_b, degree);
-	while (degree >= 4)
+	copy = 4;
+	while (copy <= degree)
 	{
-		polovina(stack_a, stack_b, degree);
-		min_back(stack_a, stack_b);
-		degree /= 2;
+		recursion(stack_a, stack_b, copy);
+		copy *= 2;
 	}
-	ft_last(stack_a, stack_b);
-
-	segment_4(stack_a, stack_b);
 }
-
-void	segment_16(t_stack **stack_a, t_stack **stack_b)
-{
-	int	degree;
-
-	degree = 16;
-	papapapa(stack_a, stack_b, degree);
-	while (degree >= 4)
-	{
-		polovina(stack_a, stack_b, degree);
-		min_back(stack_a, stack_b);
-		degree /= 2;
-	}
-	ft_last(stack_a, stack_b);
-
-	segment_4(stack_a, stack_b);
-	segment_8(stack_a, stack_b);
-}
-
-void	segment_32(t_stack **stack_a, t_stack **stack_b)
-{
-	int	degree;
-
-	degree = 32;
-	papapapa(stack_a, stack_b, degree);
-	while (degree >= 4)
-	{
-		polovina(stack_a, stack_b, degree);
-		min_back(stack_a, stack_b);
-		degree /= 2;
-	}
-	ft_last(stack_a, stack_b);
-
-	segment_4(stack_a, stack_b);
-	segment_8(stack_a, stack_b);
-	segment_16(stack_a, stack_b);
-}
-
-void	segment_64(t_stack **stack_a, t_stack **stack_b)
-{
-	int	degree;
-
-	degree = 64;
-	papapapa(stack_a, stack_b, degree);
-	while (degree >= 4)
-	{
-		polovina(stack_a, stack_b, degree);
-		min_back(stack_a, stack_b);
-		degree /= 2;
-	}
-	ft_last(stack_a, stack_b);
-
-	segment_4(stack_a, stack_b);
-	segment_8(stack_a, stack_b);
-	segment_16(stack_a, stack_b);
-	segment_32(stack_a, stack_b);
-}
-
-void	segment_128(t_stack **stack_a, t_stack **stack_b)
-{
-	int	degree;
-
-	degree = 128;
-	papapapa(stack_a, stack_b, degree);
-	while (degree >= 4)
-	{
-		polovina(stack_a, stack_b, degree);
-		min_back(stack_a, stack_b);
-		degree /= 2;
-	}
-	ft_last(stack_a, stack_b);
-
-	segment_4(stack_a, stack_b);
-	segment_8(stack_a, stack_b);
-	segment_16(stack_a, stack_b);
-	segment_32(stack_a, stack_b);
-	segment_64(stack_a, stack_b);
-}
-
-void	segment_256(t_stack **stack_a, t_stack **stack_b)
-{
-	int	degree;
-
-	degree = 256;
-	papapapa(stack_a, stack_b, degree);
-	while (degree >= 4)
-	{
-		polovina(stack_a, stack_b, degree);
-		min_back(stack_a, stack_b);
-		degree /= 2;
-	}
-	ft_last(stack_a, stack_b);
-
-	segment_4(stack_a, stack_b);
-	segment_8(stack_a, stack_b);
-	segment_16(stack_a, stack_b);
-	segment_32(stack_a, stack_b);
-	segment_64(stack_a, stack_b);
-	segment_128(stack_a, stack_b);
-}
-
 
 void	quicksort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	count;
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (*stack_a != (*stack_a)->next->next && *stack_a != (*stack_a)->next)
 	{
 		count = stacklen(*stack_a);
 		polovina(stack_a, stack_b, count);
-		i++;
+		i *= 2;
 	}
 	ft_last(stack_a, stack_b);
-
-	segment_4(stack_a, stack_b);
-	segment_8(stack_a, stack_b);
-	segment_16(stack_a, stack_b);
-	segment_32(stack_a, stack_b);
-	segment_64(stack_a, stack_b);
-	segment_128(stack_a, stack_b);
-	segment_256(stack_a, stack_b);
+	lol(stack_a, stack_b, i);
 }
