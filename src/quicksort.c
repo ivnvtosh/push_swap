@@ -138,57 +138,29 @@ void	papapapa(t_stack **stack_a, t_stack **stack_b, int count)
 	}
 }
 
-void	quicksort(t_stack **stack_a, t_stack **stack_b)
+void	segment_4(t_stack **stack_a, t_stack **stack_b)
 {
-	int	count;
-	int	i;
-
-	i = 0;
-	while (*stack_a != (*stack_a)->next->next && *stack_a != (*stack_a)->next)
-	{
-		count = stacklen(*stack_a);
-		polovina(stack_a, stack_b, count);
-		i++;
-	}
-	ft_last(stack_a, stack_b);
-
-
-
-
-
-
-
-
-
-
-
-
-	//----------------------------------------------------------------	4
-
-	//		next	4
 	papapapa(stack_a, stack_b, 4);
 	polovina(stack_a, stack_b, 4);
 	min_back(stack_a, stack_b);
 	ft_last(stack_a, stack_b);
+}
 
-	//----------------------------------------------------------------	8
-
-	//		next	8
+void	segment_8(t_stack **stack_a, t_stack **stack_b)
+{
 	papapapa(stack_a, stack_b, 8);
 	polovina(stack_a, stack_b, 8);
 	min_back(stack_a, stack_b);
 	polovina(stack_a, stack_b, 4);
 	min_back(stack_a, stack_b);
 	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
 
-	//----------------------------------------------------------------	16
+	segment_4(stack_a, stack_b);
+}
 
-	//		next	16
+void	segment_16(t_stack **stack_a, t_stack **stack_b)
+{
+
 	papapapa(stack_a, stack_b, 16);
 	polovina(stack_a, stack_b, 16);
 	min_back(stack_a, stack_b);
@@ -197,27 +169,13 @@ void	quicksort(t_stack **stack_a, t_stack **stack_b)
 	polovina(stack_a, stack_b, 4);
 	min_back(stack_a, stack_b);
 	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
 
-//----------------------------------------------------------------	32
+	segment_4(stack_a, stack_b);
+	segment_8(stack_a, stack_b);
+}
 
-	//		next	32
+void	segment_32(t_stack **stack_a, t_stack **stack_b)
+{
 	papapapa(stack_a, stack_b, 32);
 	polovina(stack_a, stack_b, 32);
 	min_back(stack_a, stack_b);
@@ -228,53 +186,14 @@ void	quicksort(t_stack **stack_a, t_stack **stack_b)
 	polovina(stack_a, stack_b, 4);
 	min_back(stack_a, stack_b);
 	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
 
-	//----------------------------------------------------------------	64
+	segment_4(stack_a, stack_b);
+	segment_8(stack_a, stack_b);
+	segment_16(stack_a, stack_b);
+}
 
-	//		next	64
+void	segment_64(t_stack **stack_a, t_stack **stack_b)
+{
 	papapapa(stack_a, stack_b, 64);
 	polovina(stack_a, stack_b, 64);
 	min_back(stack_a, stack_b);
@@ -287,107 +206,15 @@ void	quicksort(t_stack **stack_a, t_stack **stack_b)
 	polovina(stack_a, stack_b, 4);
 	min_back(stack_a, stack_b);
 	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	32
-	papapapa(stack_a, stack_b, 32);
-	polovina(stack_a, stack_b, 32);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
 
-	//----------------------------------------------------------------	128
+	segment_4(stack_a, stack_b);
+	segment_8(stack_a, stack_b);
+	segment_16(stack_a, stack_b);
+	segment_32(stack_a, stack_b);
+}
 
-	//		next	128
+void	segment_128(t_stack **stack_a, t_stack **stack_b)
+{
 	papapapa(stack_a, stack_b, 128);
 	polovina(stack_a, stack_b, 128);
 	min_back(stack_a, stack_b);
@@ -402,217 +229,16 @@ void	quicksort(t_stack **stack_a, t_stack **stack_b)
 	polovina(stack_a, stack_b, 4);
 	min_back(stack_a, stack_b);
 	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	32
-	papapapa(stack_a, stack_b, 32);
-	polovina(stack_a, stack_b, 32);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	64
-	papapapa(stack_a, stack_b, 64);
-	polovina(stack_a, stack_b, 64);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 32);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	32
-	papapapa(stack_a, stack_b, 32);
-	polovina(stack_a, stack_b, 32);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
 
-	//----------------------------------------------------------------	256
+	segment_4(stack_a, stack_b);
+	segment_8(stack_a, stack_b);
+	segment_16(stack_a, stack_b);
+	segment_32(stack_a, stack_b);
+	segment_64(stack_a, stack_b);
+}
 
-	//		next	256
+void	segment_256(t_stack **stack_a, t_stack **stack_b)
+{
 	papapapa(stack_a, stack_b, 256);
 	polovina(stack_a, stack_b, 256);
 	min_back(stack_a, stack_b);
@@ -629,433 +255,34 @@ void	quicksort(t_stack **stack_a, t_stack **stack_b)
 	polovina(stack_a, stack_b, 4);
 	min_back(stack_a, stack_b);
 	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
+
+	segment_4(stack_a, stack_b);
+	segment_8(stack_a, stack_b);
+	segment_16(stack_a, stack_b);
+	segment_32(stack_a, stack_b);
+	segment_64(stack_a, stack_b);
+	segment_128(stack_a, stack_b);
+}
+
+void	quicksort(t_stack **stack_a, t_stack **stack_b)
+{
+	int	count;
+	int	i;
+
+	i = 0;
+	while (*stack_a != (*stack_a)->next->next && *stack_a != (*stack_a)->next)
+	{
+		count = stacklen(*stack_a);
+		polovina(stack_a, stack_b, count);
+		i++;
+	}
 	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	32
-	papapapa(stack_a, stack_b, 32);
-	polovina(stack_a, stack_b, 32);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	64
-	papapapa(stack_a, stack_b, 64);
-	polovina(stack_a, stack_b, 64);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 32);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	32
-	papapapa(stack_a, stack_b, 32);
-	polovina(stack_a, stack_b, 32);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	128
-	papapapa(stack_a, stack_b, 128);
-	polovina(stack_a, stack_b, 128);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 64);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 32);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	32
-	papapapa(stack_a, stack_b, 32);
-	polovina(stack_a, stack_b, 32);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	64
-	papapapa(stack_a, stack_b, 64);
-	polovina(stack_a, stack_b, 64);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 32);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	32
-	papapapa(stack_a, stack_b, 32);
-	polovina(stack_a, stack_b, 32);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	16
-	papapapa(stack_a, stack_b, 16);
-	polovina(stack_a, stack_b, 16);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	8
-	papapapa(stack_a, stack_b, 8);
-	polovina(stack_a, stack_b, 8);
-	min_back(stack_a, stack_b);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
-	//		next	4
-	papapapa(stack_a, stack_b, 4);
-	polovina(stack_a, stack_b, 4);
-	min_back(stack_a, stack_b);
-	ft_last(stack_a, stack_b);
+
+	segment_4(stack_a, stack_b);
+	segment_8(stack_a, stack_b);
+	segment_16(stack_a, stack_b);
+	segment_32(stack_a, stack_b);
+	segment_64(stack_a, stack_b);
+	segment_128(stack_a, stack_b);
+	segment_256(stack_a, stack_b);
 }
