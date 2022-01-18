@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   quicksort.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/18 17:38:07 by ccamie            #+#    #+#             */
+/*   Updated: 2022/01/18 17:38:08 by ccamie           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "push_swap.h"
+#include <limits.h>
 
 void	action(t_stack **stack_a, t_stack **stack_b, const char *s);
 int		stacklen(t_stack *stack);
@@ -7,110 +20,53 @@ void	print(t_stack *stack_a, t_stack *stack_b);
 
 int	get_pivot(t_stack *stack, int count)
 {
-	t_stack	*start;
 	int		pivot;
-	int		i;
+	int		temp;
 
 	if (stack == NULL)
 		return (0);
 	if (stack == stack->next)
 		return (stack->cell);
-	start = stack;
 	pivot = 0;
-	i = 1;
-	while (count > 0)
+	temp = count + 1;
+	while (count >= 0)
 	{
 		pivot += stack->cell;
 		stack = stack->next;
-		i++;
 		count--;
 	}
-	pivot += stack->cell;
-	pivot /= i;
+	pivot /= temp;
 	return (pivot);
 }
 
-void	polovina(t_stack **stack_a, t_stack **stack_b, int count)
+int	polovina(t_stack **stack_a, t_stack **stack_b, int count)
 {
 	int	pivot;
+	int	back;
 
+	back = 0;
 	pivot = get_pivot(*stack_a, count);
-	while (count > 0)
+	while (count >= 0 && *stack_a != (*stack_a)->next->next)
 	{
-		if (*stack_a == (*stack_a)->next->next)
-			return ;	
-		// printf("%d < %d\n", pivot, (*stack_a)->cell);
 		if (pivot < (*stack_a)->cell)
 			action(stack_a, stack_b, "pb");
 		else
+		{
 			action(stack_a, stack_b, "ra");
-		count--;	
-	}
-	if (pivot < (*stack_a)->cell)
-		action(stack_a, stack_b, "pb");
-	else
-		action(stack_a, stack_b, "ra");
-}
-
-void	polovina_b(t_stack **stack_a, t_stack **stack_b, int count)
-{
-	int	pivot;
-
-	pivot = get_pivot(*stack_b, count);
-	while (count > 0)
-	{
-		if (*stack_b == (*stack_b)->next->next)
-			return ;	
-		// printf("%d < %d\n", pivot, (*stack_a)->cell);
-		if (pivot > (*stack_b)->cell)
-			action(stack_a, stack_b, "pa");
-		else
-			action(stack_a, stack_b, "rb");
-		count--;	
-	}
-	if (pivot > (*stack_b)->cell)
-		action(stack_a, stack_b, "pa");
-	else
-		action(stack_a, stack_b, "rb");
-}
-
-int	get_min(t_stack *stack)
-{
-	int		min;
-	int		count;
-
-	if (stack == NULL)
-		return (0);
-	if (stack == stack->next)
-		return (stack->cell);
-	min = 20000000;
-	count = stacklen(stack);
-	while (count > 0)
-	{
-		if (min > stack->cell)
-			min = stack->cell;
-		stack = stack->next;
+			back++;
+		}
 		count--;
 	}
-	return (min);
+	return (back);
 }
 
-void	min_back(t_stack **stack_a, t_stack **stack_b)
+void	min_back(t_stack **stack_a, t_stack **stack_b, int count)
 {
-	int	min;
-
-	min = get_min(*stack_a);
-	while ((*stack_a)->prev->cell != min)
+	while (count > 0)
+	{
 		action(stack_a, stack_b, "rra");
-}
-
-void	min_back_b(t_stack **stack_a, t_stack **stack_b)
-{
-	int	min;
-
-	min = get_min(*stack_b);
-	while ((*stack_b)->cell != min)
-		action(stack_a, stack_b, "rrb");
+		count--;
+	}
 }
 
 void	ft_last(t_stack **stack_a, t_stack **stack_b)
@@ -139,6 +95,7 @@ void	papapapa(t_stack **stack_a, t_stack **stack_b, int count)
 
 void	recursion(t_stack **stack_a, t_stack **stack_b, int degree)
 {
+	int	back;
 	int	copy;
 
 	if (degree < 4)	
@@ -147,8 +104,8 @@ void	recursion(t_stack **stack_a, t_stack **stack_b, int degree)
 	papapapa(stack_a, stack_b, degree);
 	while (degree >= 4)
 	{
-		polovina(stack_a, stack_b, degree);
-		min_back(stack_a, stack_b);
+		back = polovina(stack_a, stack_b, degree);
+		min_back(stack_a, stack_b, back);
 		degree /= 2;
 	}
 	ft_last(stack_a, stack_b);
