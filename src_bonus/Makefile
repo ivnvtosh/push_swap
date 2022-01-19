@@ -10,11 +10,23 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=		push_swap
-HEADER		=	src/push_swap.h
+NAME		=	../checker
+HEADER		=	   checker_bonus.h
 
-LIBFT		=	libft/libft.a
-HEADER_L	=	libft/libft.h
+LIBFT		=	../libft/libft.a
+HEADER_L	=	../libft/libft.h
+				
+SRCS		=	checker_bonus.c		\
+				main_bonus.c		\
+				parser_bonus.c		\
+				terminate_bonus.c	\
+				utils_bonus.c
+
+
+
+
+
+
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
@@ -22,29 +34,20 @@ RM			=	rm -f
 
 OBJS		=	$(SRCS:.c=.o)
 
-.PHONY		:	all clean fclean re bonus rebonus libft
+.PHONY		:	all clean fclean re
 
-all			:	libft
-				make -C src all
+all			:	$(NAME)
 
-libft		:
-				make -C libft all
+$(NAME)		:	$(OBJS)
+				$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $(NAME)
 
-bonus		:	libft
-				make -C src_bonus all
+%.o			:	%.c $(HEADER) $(HEADER_L)
+				$(CC) $(CFLAGS) -c $< -o $@
 
 clean		:
 				$(RM) $(OBJS)
-				make -C libft clean
-				make -C src clean
-				make -C src_bonus clean
 
 fclean		:	clean
 				$(RM) $(NAME)
-				make -C libft fclean
-				make -C src clean
-				make -C src_bonus fclean
-				
-re			:	fclean all
 
-rebonus		:	fclean bonus
+re			:	fclean all

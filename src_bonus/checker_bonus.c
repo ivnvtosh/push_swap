@@ -13,6 +13,7 @@
 #include "checker_bonus.h"
 
 t_stack	*parser(int *count, char **numbers);
+void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
 
 void	checker(int count, char **numbers)
 {
