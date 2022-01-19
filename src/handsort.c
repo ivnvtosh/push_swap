@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handsorting.c                                      :+:      :+:    :+:   */
+/*   handsort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,97 +15,97 @@
 
 void	action(t_stack **stack_a, t_stack **stack_b, const char *s);
 
-typedef struct s_number
+typedef struct s_nbr
 {
 	int	n1;
 	int	n2;
 	int	n3;
 	int	n4;
-}	t_number;
+}	t_nbr;
 
-void	norma_3(t_number c)
+void	norma_3(t_nbr n)
 {
-	if (c.n4 > c.n2 && c.n2 > c.n1 && c.n1 > c.n3)
+	if (n.n4 > n.n2 && n.n2 > n.n1 && n.n1 > n.n3)
 		ft_putstr_fd("ra\nsa\nrra\nsa\n", 1);
-	else if (c.n3 > c.n1 && c.n1 > c.n2 && c.n2 > c.n4)
+	else if (n.n3 > n.n1 && n.n1 > n.n2 && n.n2 > n.n4)
 		ft_putstr_fd("sa\nrra\n", 1);
-	else if (c.n4 > c.n1 && c.n1 > c.n3 && c.n3 > c.n2)
+	else if (n.n4 > n.n1 && n.n1 > n.n3 && n.n3 > n.n2)
 		ft_putstr_fd("rra\nsa\nra\nra\n", 1);
-	else if (c.n4 > c.n1 && c.n1 > c.n2 && c.n2 > c.n3)
+	else if (n.n4 > n.n1 && n.n1 > n.n2 && n.n2 > n.n3)
 		ft_putstr_fd("rra\nsa\nra\nra\nsa\n", 1);
-	else if (c.n2 > c.n1 && c.n1 > c.n3 && c.n3 > c.n4)
+	else if (n.n2 > n.n1 && n.n1 > n.n3 && n.n3 > n.n4)
 		ft_putstr_fd("ra\nra\nsa\n", 1);
-	else if (c.n2 > c.n1 && c.n1 > c.n4 && c.n4 > c.n3)
+	else if (n.n2 > n.n1 && n.n1 > n.n4 && n.n4 > n.n3)
 		ft_putstr_fd("ra\nra\n", 1);
-	else if (c.n3 > c.n4 && c.n4 > c.n1 && c.n1 > c.n2)
+	else if (n.n3 > n.n4 && n.n4 > n.n1 && n.n1 > n.n2)
 		ft_putstr_fd("pb\nra\nsa\npa\nrra\n", 1);
-	else if (c.n2 > c.n4 && c.n4 > c.n1 && c.n1 > c.n3)
+	else if (n.n2 > n.n4 && n.n4 > n.n1 && n.n1 > n.n3)
 		ft_putstr_fd("sa\nra\nsa\n", 1);
-	else if (c.n2 > c.n3 && c.n3 > c.n1 && c.n1 > c.n4)
+	else if (n.n2 > n.n3 && n.n3 > n.n1 && n.n1 > n.n4)
 		ft_putstr_fd("ra\nsa\nrra\nrra\n", 1);
-	else if (c.n3 > c.n1 && c.n1 > c.n4 && c.n4 > c.n2)
+	else if (n.n3 > n.n1 && n.n1 > n.n4 && n.n4 > n.n2)
 		ft_putstr_fd("ra\nsa\nra\n", 1);
-	else if (c.n1 > c.n3 && c.n3 > c.n2 && c.n2 > c.n4)
+	else if (n.n1 > n.n3 && n.n3 > n.n2 && n.n2 > n.n4)
 		ft_putstr_fd("rra\npb\nra\npa\n", 1);
-	else if (c.n3 > c.n2 && c.n2 > c.n1 && c.n1 > c.n4)
+	else if (n.n3 > n.n2 && n.n2 > n.n1 && n.n1 > n.n4)
 		ft_putstr_fd("rra\n", 1);
 }
 
-void	norma_2(t_number c)
+void	norma_2(t_nbr n)
 {
-	if (c.n1 > c.n2 && c.n2 > c.n3 && c.n3 > c.n4)
+	if (n.n1 > n.n2 && n.n2 > n.n3 && n.n3 > n.n4)
 		ft_putstr_fd("sa\nra\nra\nsa\n", 1);
-	else if (c.n1 > c.n2 && c.n2 > c.n4 && c.n4 > c.n3)
+	else if (n.n1 > n.n2 && n.n2 > n.n4 && n.n4 > n.n3)
 		ft_putstr_fd("sa\nra\nra\n", 1);
-	else if (c.n1 > c.n4 && c.n4 > c.n3 && c.n3 > c.n2)
+	else if (n.n1 > n.n4 && n.n4 > n.n3 && n.n3 > n.n2)
 		ft_putstr_fd("ra\n", 1);
-	else if (c.n1 > c.n3 && c.n3 > c.n4 && c.n4 > c.n2)
+	else if (n.n1 > n.n3 && n.n3 > n.n4 && n.n4 > n.n2)
 		ft_putstr_fd("rra\nsa\nra\nsa\n", 1);
-	else if (c.n1 > c.n4 && c.n4 > c.n2 && c.n2 > c.n3)
+	else if (n.n1 > n.n4 && n.n4 > n.n2 && n.n2 > n.n3)
 		ft_putstr_fd("ra\nsa\n", 1);
-	else if (c.n3 > c.n4 && c.n4 > c.n2 && c.n2 > c.n1)
+	else if (n.n3 > n.n4 && n.n4 > n.n2 && n.n2 > n.n1)
 		ft_putstr_fd("ra\nra\nsa\nra\nra\n", 1);
-	else if (c.n2 > c.n3 && c.n3 > c.n4 && c.n4 > c.n1)
+	else if (n.n2 > n.n3 && n.n3 > n.n4 && n.n4 > n.n1)
 		ft_putstr_fd("ra\nsa\nra\nra\nsa\n", 1);
-	else if (c.n2 > c.n4 && c.n4 > c.n3 && c.n3 > c.n1)
+	else if (n.n2 > n.n4 && n.n4 > n.n3 && n.n3 > n.n1)
 		ft_putstr_fd("sa\nra\n", 1);
-	else if (c.n3 > c.n2 && c.n2 > c.n4 && c.n4 > c.n1)
+	else if (n.n3 > n.n2 && n.n2 > n.n4 && n.n4 > n.n1)
 		ft_putstr_fd("rra\nsa\n", 1);
-	else if (c.n4 > c.n2 && c.n2 > c.n3 && c.n3 > c.n1)
+	else if (n.n4 > n.n2 && n.n2 > n.n3 && n.n3 > n.n1)
 		ft_putstr_fd("ra\nsa\nrra\n", 1);
-	else if (c.n4 > c.n3 && c.n3 > c.n1 && c.n1 > c.n2)
+	else if (n.n4 > n.n3 && n.n3 > n.n1 && n.n1 > n.n2)
 		ft_putstr_fd("sa\n", 1);
 	else
-		norma_3(c);
+		norma_3(n);
 }
 
-void	norma_1(t_number c)
+void	norma_1(t_nbr n)
 {
-	if (c.n1 > c.n2 && c.n2 > c.n3)
+	if (n.n1 > n.n2 && n.n2 > n.n3)
 		ft_putstr_fd("sa\nrra\n", 1);
-	else if (c.n1 > c.n3 && c.n3 > c.n2)
+	else if (n.n1 > n.n3 && n.n3 > n.n2)
 		ft_putstr_fd("ra\n", 1);
-	else if (c.n2 > c.n3 && c.n3 > c.n1)
+	else if (n.n2 > n.n3 && n.n3 > n.n1)
 		ft_putstr_fd("rra\nsa\n", 1);
-	else if (c.n3 > c.n1 && c.n1 > c.n2)
+	else if (n.n3 > n.n1 && n.n1 > n.n2)
 		ft_putstr_fd("sa\n", 1);
-	else if (c.n2 > c.n1 && c.n1 > c.n3)
+	else if (n.n2 > n.n1 && n.n1 > n.n3)
 		ft_putstr_fd("rra\n", 1);
 }
 
-void	handsorting(t_stack **stack_a, t_stack **stack_b, int argc)
+void	handsort(t_stack **stack_a, t_stack **stack_b, int argc)
 {
-	t_number	c;
+	t_nbr	n;
 
 	(void)stack_b;
 	if (argc == 2)
 		return (ft_putstr_fd("sa\n", 1));
-	c.n1 = (*stack_a)->cell;
-	c.n2 = (*stack_a)->next->cell;
-	c.n3 = (*stack_a)->next->next->cell;
+	n.n1 = (*stack_a)->cell;
+	n.n2 = (*stack_a)->next->cell;
+	n.n3 = (*stack_a)->next->next->cell;
 	if (argc == 3)
-		return (norma_1(c));
-	c.n4 = (*stack_a)->prev->cell;
+		return (norma_1(n));
+	n.n4 = (*stack_a)->prev->cell;
 	if (argc == 4)
-		return (norma_2(c));
+		return (norma_2(n));
 }

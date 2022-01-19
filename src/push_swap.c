@@ -15,7 +15,7 @@
 
 t_stack	*parser(int *argc, char **argv);
 void	print(t_stack *stack_a, t_stack *stack_b);
-void	handsorting(t_stack **stack_a, t_stack **stack_b, int argc);
+void	handsort(t_stack **stack_a, t_stack **stack_b, int argc);
 void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
 
 void	push_swap(int argc, char **argv)
@@ -26,6 +26,6 @@ void	push_swap(int argc, char **argv)
 	stack_a = parser(&argc, argv);
 	stack_b = NULL;
 	if (argc < 6)
-		handsorting(&stack_a, &stack_b, argc);
+		handsort(&stack_a, &stack_b, argc);
 	terminate(stack_a, stack_b, 0);
 }
