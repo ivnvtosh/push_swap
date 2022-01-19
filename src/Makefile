@@ -41,7 +41,7 @@ all			:	$(NAME)
 $(NAME)		:	$(OBJS)
 				$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $(NAME)
 
-%.o			:	%.c $(HEADER) $(HEADER_L)
+%.o			:	%.c $(HEADER) $(HEADER_L) $(LIBFT)
 				$(CC) $(CFLAGS) -c $< -o $@
 
 clean		:

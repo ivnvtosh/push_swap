@@ -22,12 +22,6 @@ SRCS		=	checker_bonus.c		\
 				terminate_bonus.c	\
 				utils_bonus.c
 
-
-
-
-
-
-
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
@@ -41,7 +35,7 @@ all			:	$(NAME)
 $(NAME)		:	$(OBJS)
 				$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $(NAME)
 
-%.o			:	%.c $(HEADER) $(HEADER_L)
+%.o			:	%.c $(HEADER) $(HEADER_L) $(LIBFT)
 				$(CC) $(CFLAGS) -c $< -o $@
 
 clean		:
