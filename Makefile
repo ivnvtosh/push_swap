@@ -13,8 +13,8 @@
 NAME		=		push_swap
 HEADER		=	src/push_swap.h
 
-NAME_B		=
-HEADER_B	=
+NAME_B		=			  checker
+HEADER_B	=	src_bonus/checker_bonus.h
 
 LIBFT		=	libft/libft.a
 HEADER_L	=	libft/libft.h
@@ -31,7 +31,11 @@ SRCS		=	src/action.c	\
 				src/terminate.c	\
 				src/utils.c
 				
-SRCS_B		=
+SRCS_B		=	src_bonus/checker_bonus.c	\
+				src_bonus/main_bonus.c		\
+				src_bonus/parser_bonus.c	\
+				src_bonus/terminate_bonus.c	\
+				src_bonus/utils_bonus.c
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
@@ -54,7 +58,7 @@ libft		:
 				make -C libft all
 
 bonus		:	
-				@make OBJS="$(OBJS_B)" HEADER="$(HEADER_B)" all
+				make NAME="$(NAME_B)" HEADER="$(HEADER_B) OBJS="$(OBJS_B)"" all
 
 clean		:
 				$(RM) $(OBJS) $(OBJS_B)
