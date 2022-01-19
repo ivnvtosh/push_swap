@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-
 void	checker(int count, char **numbers);
 
 int	main(int argc, char **argv)

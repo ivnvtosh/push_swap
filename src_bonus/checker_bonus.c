@@ -11,16 +11,24 @@
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
+#include "../libft/libft.h"
 
 t_stack	*parser(int *count, char **numbers);
+t_list	*parser_commands(t_stack *stack_a, t_stack *stack_b);
+void	apply_commands(t_stack **stack_a, t_stack **stack_b, t_list *commands);
+void	evaluate_stack(t_stack *stack_a, t_stack *stack_b);
 void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
 
 void	checker(int count, char **numbers)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	t_list	*commands;
 
 	stack_a = parser(&count, numbers);
 	stack_b = NULL;
-	terminate(stack_a, stack_b, 0);
+	commands = parser_commands(stack_a, stack_b);
+	apply_commands(&stack_a, &stack_b, commands);
+	evaluate_stack(stack_a, stack_b);
+	terminate(stack_a, stack_b, 5);
 }

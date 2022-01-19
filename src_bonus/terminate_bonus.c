@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   terminate.c                                        :+:      :+:    :+:   */
+/*   terminate_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "checker_bonus.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 
 void	clean(t_stack *stack);
 
 void	leave(int code)
 {
-	if (code)
+	if (code == 5)
+		ft_putstr_fd("OK\n", 1);
+	else if (code == 3)
+		ft_putstr_fd("KO\n", 1);
+	else if (code)
 		ft_putstr_fd("Error\n", 2);
 	exit(code);
 }

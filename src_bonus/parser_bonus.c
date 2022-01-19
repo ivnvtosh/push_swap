@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "checker_bonus.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 #include <limits.h>
 

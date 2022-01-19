@@ -10,28 +10,16 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=		push_swap
-HEADER		=	src/push_swap.h
-
-LIBFT		=	libft/libft.a
-HEADER_L	=	libft/libft.h
-
-CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror
-RM			=	rm -f
-
-OBJS		=	$(SRCS:.c=.o)
-
 .PHONY		:	all clean fclean re bonus rebonus libft
 
 all			:	libft
 				make -C src all
 
-libft		:
-				make -C libft all
-
 bonus		:	libft
 				make -C src_bonus all
+
+libft		:
+				make -C libft bonus
 
 clean		:
 				$(RM) $(OBJS)
@@ -42,7 +30,7 @@ clean		:
 fclean		:	clean
 				$(RM) $(NAME)
 				make -C libft fclean
-				make -C src clean
+				make -C src fclean
 				make -C src_bonus fclean
 				
 re			:	fclean all

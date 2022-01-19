@@ -14,7 +14,6 @@ NAME		=	../push_swap
 HEADER		=	   push_swap.h
 
 LIBFT		=	../libft/libft.a
-HEADER_L	=	../libft/libft.h
 
 SRCS		=	action.c	\
 				handsort.c	\
@@ -41,7 +40,7 @@ all			:	$(NAME)
 $(NAME)		:	$(OBJS)
 				$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $(NAME)
 
-%.o			:	%.c $(HEADER) $(HEADER_L) $(LIBFT)
+%.o			:	%.c $(HEADER) $(LIBFT)
 				$(CC) $(CFLAGS) -c $< -o $@
 
 clean		:

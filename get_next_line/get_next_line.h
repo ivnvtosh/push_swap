@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 22:41:31 by ccamie            #+#    #+#             */
-/*   Updated: 2021/10/19 22:41:33 by ccamie           ###   ########.fr       */
+/*   Created: 2021/10/26 19:49:24 by ccamie            #+#    #+#             */
+/*   Updated: 2021/10/26 19:49:25 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+char	*get_next_line(int fd);
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*tab;
-
-	while (*lst)
-	{
-		tab = *lst;
-		*lst = (*lst)->next;
-		del(tab->content);
-		free(tab);
-	}
-	*lst = NULL;
-}
+#endif
