@@ -12,9 +12,12 @@
 
 NAME		=		push_swap
 HEADER		=	src/push_swap.h
+
+NAME_B		=
 HEADER_B	=
 
 LIBFT		=	libft/libft.a
+HEADER_L	=	libft/libft.h
 
 SRCS		=	src/action.c	\
 				src/handsort.c	\
@@ -44,10 +47,10 @@ all			:	libft $(NAME)
 $(NAME)		:	$(OBJS)
 				$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $(NAME)
 
-%.o			:	%.c $(HEADER)
+%.o			:	%.c $(HEADER) $(HEADER_L)
 				$(CC) $(CFLAGS) -c $< -o $@
 
-libft	:
+libft		:
 				make -C libft all
 
 bonus		:	
