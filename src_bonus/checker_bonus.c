@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   terminate.c                                        :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 05:18:25 by ccamie            #+#    #+#             */
-/*   Updated: 2022/01/13 05:18:26 by ccamie           ###   ########.fr       */
+/*   Created: 2022/01/19 19:57:53 by ccamie            #+#    #+#             */
+/*   Updated: 2022/01/19 19:57:55 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "push_swap.h"
-#include <stdlib.h>
+#include "checker_bonus.h"
 
-void	clean(t_stack *stack);
+t_stack	*parser(int *count, char **numbers);
 
-void	leave(int code)
+void	checker(int count, char **numbers)
 {
-	if (code)
-		ft_putstr_fd("Error\n", 2);
-	exit(code);
-}
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
-void	terminate(t_stack *stack_a, t_stack *stack_b, int code)
-{
-	clean(stack_a);
-	clean(stack_b);
-	leave(code);
+	stack_a = parser(&count, numbers);
+	stack_b = NULL;
+	terminate(stack_a, stack_b, 0);
 }
