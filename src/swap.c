@@ -13,11 +13,9 @@
 #include "../libft/libft.h"
 #include "push_swap.h"
 
-int	stacklen(t_stack *stack);
-
 void	swap(t_stack *stack)
 {
-	if (stack == NULL || stack->next == NULL)
+	if (stack == NULL || stack == stack->next)
 		return ;
-	ft_swap(&stack->cell, &stack->next->cell);
+	ft_swap(&stack->number, &stack->next->number);
 }

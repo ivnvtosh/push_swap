@@ -42,52 +42,52 @@ void	check(char **argv)
 t_stack	*stack_allocate(char **argv)
 {
 	t_stack	*stack;
-	t_stack	*elem_first;
-	t_stack	*elem_prev;
+	t_stack	*start;
+	t_stack	*prev;
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
 		leave(2);
-	stack->cell = ft_atoi(*argv++);
-	elem_first = stack;
+	stack->number = ft_atoi(*argv++);
+	start = stack;
 	while (*argv)
 	{
 		stack->next = (t_stack *)malloc(sizeof(t_stack));
 		if (stack->next == NULL)
-			terminate(elem_first, NULL, 2);
-		elem_prev = stack;
+			terminate(start, NULL, 2);
+		prev = stack;
 		stack = stack->next;
-		stack->prev = elem_prev;
-		stack->cell = ft_atoi(*argv++);
+		stack->prev = prev;
+		stack->number = ft_atoi(*argv++);
 	}
-	stack->next = elem_first;
-	elem_first->prev = stack;
-	return (elem_first);
+	stack->next = start;
+	start->prev = stack;
+	return (start);
 }
 
 void	duplicates_sorted(t_stack *stack)
 {
-	t_stack	*elem_first;
-	t_stack	*elem_prev;
+	t_stack	*start;
+	t_stack	*prev;
 
-	elem_first = stack;
-	while (stack->next != elem_first)
+	start = stack;
+	while (stack->next != start)
 	{
-		elem_prev = stack;
+		prev = stack;
 		stack = stack->next;
-		while (stack != elem_first)
+		while (stack != start)
 		{
-			if (elem_prev->cell == stack->cell)
-				terminate(elem_first, NULL, 1);
+			if (prev->number == stack->number)
+				terminate(start, NULL, 1);
 			stack = stack->next;
 		}
-		stack = elem_prev->next;
+		stack = prev->next;
 	}
-	stack = elem_first;
-	while (stack->next != elem_first && stack->cell < stack->next->cell)
+	stack = start;
+	while (stack->next != start && stack->number < stack->next->number)
 		stack = stack->next;
-	if (stack->next == elem_first)
-		terminate(elem_first, NULL, 0);
+	if (stack->next == start)
+		terminate(start, NULL, 0);
 }
 
 t_stack	*get_stack(char **argv)
@@ -100,15 +100,15 @@ t_stack	*get_stack(char **argv)
 	return (stack);
 }
 
-t_stack	*parser(int *argc, char **argv)
+t_stack	*parser(int *count, char **numbers)
 {
 	t_stack	*stack;
 	char	**temp;
 	int		i;
 
-	if (*argc == 1)
+	if (*count == 1)
 	{
-		temp = ft_split(*argv, 32);
+		temp = ft_split(*numbers, 32);
 		if (temp == NULL)
 			leave(2);
 		if (temp[1] == NULL)
@@ -122,9 +122,9 @@ t_stack	*parser(int *argc, char **argv)
 		while (temp[i])
 			free(temp[i++]);
 		free(temp);
-		*argc = i;
+		*count = i;
 	}
 	else
-		stack = get_stack(argv);
+		stack = get_stack(numbers);
 	return (stack);
 }

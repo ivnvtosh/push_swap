@@ -93,19 +93,19 @@ void	norma_1(t_nbr n)
 		ft_putstr_fd("rra\n", 1);
 }
 
-void	handsort(t_stack **stack_a, t_stack **stack_b, int argc)
+void	handsort(t_stack **stack_a, t_stack **stack_b, int count)
 {
 	t_nbr	n;
 
 	(void)stack_b;
-	if (argc == 2)
+	if (count == 2)
 		return (ft_putstr_fd("sa\n", 1));
-	n.n1 = (*stack_a)->cell;
-	n.n2 = (*stack_a)->next->cell;
-	n.n3 = (*stack_a)->next->next->cell;
-	if (argc == 3)
+	n.n1 = (*stack_a)->number;
+	n.n2 = (*stack_a)->next->number;
+	n.n3 = (*stack_a)->next->next->number;
+	if (count == 3)
 		return (norma_1(n));
-	n.n4 = (*stack_a)->prev->cell;
-	if (argc == 4)
+	n.n4 = (*stack_a)->prev->number;
+	if (count == 4)
 		return (norma_2(n));
 }

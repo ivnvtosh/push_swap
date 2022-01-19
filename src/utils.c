@@ -14,7 +14,7 @@
 #include "push_swap.h"
 #include <stdlib.h>
 
-void	clear(t_stack *stack)
+void	clean(t_stack *stack)
 {
 	if (stack == NULL)
 		return ;
@@ -28,21 +28,19 @@ void	clear(t_stack *stack)
 	free(stack);
 }
 
-int	stacklen(t_stack *stack)
+int	stack_len(t_stack *stack)
 {
-	t_stack	*elem_first;
+	t_stack	*start;
 	int		i;
 
 	if (stack == NULL)
 		return (0);
-	if (stack == stack->next)
-		return (1);
-	elem_first = stack;
+	start = stack;
 	i = 0;
-	while (stack->next != elem_first)
+	while (stack->next != start)
 	{
 		stack = stack->next;
 		i++;
 	}
-	return (++i);
+	return (i + 1);
 }

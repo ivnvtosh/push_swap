@@ -12,8 +12,7 @@
 
 #include "../libft/libft.h"
 
-void	push_swap(int argc, char **argv);
-void	leave(int code);
+void	push_swap(int count, char **numbers);
 
 int	main(int argc, char **argv)
 {

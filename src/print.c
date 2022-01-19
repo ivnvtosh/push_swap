@@ -13,28 +13,28 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-int	stacklen(t_stack *stack);
+int	stack_len(t_stack *stack);
 
 void	print(t_stack *stack_a, t_stack *stack_b)
 {
 	int	a;
 	int	b;
 
-	a = stacklen(stack_a);
-	b = stacklen(stack_b);
+	a = stack_len(stack_a);
+	b = stack_len(stack_b);
 	printf("\x1b[4m         \n");
 	while (a > 0 || b > 0)
 	{
 		if (a-- > 0)
 		{
-			printf("|%3d|", stack_a->cell);
+			printf("|%3d|", stack_a->number);
 			stack_a = stack_a->next;
 		}
 		else
 			printf("|   |");
 		if (b-- > 0)
 		{
-			printf("%3d|\n", stack_b->cell);
+			printf("%3d|\n", stack_b->number);
 			stack_b = stack_b->next;
 		}
 		else
