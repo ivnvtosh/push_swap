@@ -18,28 +18,28 @@
 void	leave(int code);
 void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
 
-void	check(char **argv)
+void	check(char **numbers)
 {
 	long long	n;
 	int			i;
 
-	while (*argv)
+	while (*numbers)
 	{
 		i = 0;
-		if ((*argv)[i] == '-')
+		if ((*numbers)[i] == '-')
 			i++;
-		while (ft_isdigit((*argv)[i]))
+		while (ft_isdigit((*numbers)[i]))
 			i++;
-		if ((*argv)[i])
+		if ((*numbers)[i])
 			leave(1);
-		n = ft_atoll(*argv);
+		n = ft_atoll(*numbers);
 		if (n < INT_MIN || n > INT_MAX)
 			leave(1);
-		argv++;
+		numbers++;
 	}
 }
 
-t_stack	*stack_allocate(char **argv)
+t_stack	*stack_allocate(char **numbers)
 {
 	t_stack	*stack;
 	t_stack	*start;
@@ -48,9 +48,9 @@ t_stack	*stack_allocate(char **argv)
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
 		leave(2);
-	stack->number = ft_atoi(*argv++);
+	stack->number = ft_atoi(*numbers++);
 	start = stack;
-	while (*argv)
+	while (*numbers)
 	{
 		stack->next = (t_stack *)malloc(sizeof(t_stack));
 		if (stack->next == NULL)
@@ -58,7 +58,7 @@ t_stack	*stack_allocate(char **argv)
 		prev = stack;
 		stack = stack->next;
 		stack->prev = prev;
-		stack->number = ft_atoi(*argv++);
+		stack->number = ft_atoi(*numbers++);
 	}
 	stack->next = start;
 	start->prev = stack;
@@ -90,12 +90,12 @@ void	duplicates_sorted(t_stack *stack)
 		terminate(start, NULL, 0);
 }
 
-t_stack	*get_stack(char **argv)
+t_stack	*get_stack(char **numbers)
 {
 	t_stack	*stack;
 
-	check(argv);
-	stack = stack_allocate(argv);
+	check(numbers);
+	stack = stack_allocate(numbers);
 	duplicates_sorted(stack);
 	return (stack);
 }

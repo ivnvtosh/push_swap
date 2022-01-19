@@ -19,7 +19,7 @@ void	clean(t_stack *stack);
 void	leave(int code)
 {
 	if (code)
-		ft_putstr_fd("Error\n", 1);
+		ft_putstr_fd("Error\n", 2);
 	exit(code);
 }
 
