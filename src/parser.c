@@ -18,7 +18,7 @@
 void	leave(int code);
 void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
 
-void	check(char **numbers)
+static void	check(char **numbers)
 {
 	long long	n;
 	int			i;
@@ -39,7 +39,7 @@ void	check(char **numbers)
 	}
 }
 
-t_stack	*stack_allocate(char **numbers)
+static t_stack	*stack_allocate(char **numbers)
 {
 	t_stack	*stack;
 	t_stack	*start;
@@ -65,7 +65,7 @@ t_stack	*stack_allocate(char **numbers)
 	return (start);
 }
 
-void	duplicates_sorted(t_stack *stack)
+static void	duplicates_sorted(t_stack *stack)
 {
 	t_stack	*start;
 	t_stack	*prev;
@@ -90,7 +90,7 @@ void	duplicates_sorted(t_stack *stack)
 		terminate(start, NULL, 0);
 }
 
-t_stack	*get_stack(char **numbers)
+static t_stack	*get_stack(char **numbers)
 {
 	t_stack	*stack;
 

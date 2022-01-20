@@ -23,7 +23,7 @@ typedef struct s_nbr
 	int	n4;
 }	t_nbr;
 
-void	norma_3(t_nbr n)
+static void	norma_3(t_nbr n)
 {
 	if (n.n4 > n.n2 && n.n2 > n.n1 && n.n1 > n.n3)
 		ft_putstr_fd("ra\nsa\nrra\nsa\n", 1);
@@ -51,7 +51,7 @@ void	norma_3(t_nbr n)
 		ft_putstr_fd("rra\n", 1);
 }
 
-void	norma_2(t_nbr n)
+static void	norma_2(t_nbr n)
 {
 	if (n.n1 > n.n2 && n.n2 > n.n3 && n.n3 > n.n4)
 		ft_putstr_fd("sa\nra\nra\nsa\n", 1);
@@ -79,7 +79,7 @@ void	norma_2(t_nbr n)
 		norma_3(n);
 }
 
-void	norma_1(t_nbr n)
+static void	norma_1(t_nbr n)
 {
 	if (n.n1 > n.n2 && n.n2 > n.n3)
 		ft_putstr_fd("sa\nrra\n", 1);

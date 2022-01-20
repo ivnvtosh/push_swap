@@ -54,7 +54,7 @@ static	int	checking(t_list *commands)
 	if (ft_strcmp(commands->content, "rrb\n") == 0)
 		return (0);
 	if (ft_strcmp(commands->content, "rrr\n") == 0)
-		return (0);	
+		return (0);
 	return (1);
 }
 
@@ -70,7 +70,7 @@ static	void	check(t_stack *stack_a, t_stack *stack_b, t_list *commands)
 		if (error == 1)
 		{
 			ft_lstclear(&start, free);
-			terminate(stack_a, stack_b, 3);	
+			terminate(stack_a, stack_b, 3);
 		}
 		commands = commands->next;
 	}

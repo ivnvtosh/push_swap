@@ -13,7 +13,7 @@
 #include "../libft/libft.h"
 #include "push_swap.h"
 
-void	disconnect(t_stack **from)
+static void	disconnect(t_stack **from)
 {
 	if (*from == (*from)->next)
 		*from = NULL;
@@ -25,7 +25,7 @@ void	disconnect(t_stack **from)
 	}
 }
 
-void	connect(t_stack *elem, t_stack **in)
+static void	connect(t_stack *elem, t_stack **in)
 {
 	if (*in == NULL)
 	{
