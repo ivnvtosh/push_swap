@@ -6,9 +6,9 @@
 
 void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
 
-t_list	*parser_commands(t_stack *stack_a, t_stack *stack_b)
+static t_list	*get_commands(t_stack *stack_a, t_stack *stack_b)
 {
-	t_list	*comand;
+	t_list	*commands;
 	t_list	*start;
 	char	*s;
 
@@ -18,15 +18,69 @@ t_list	*parser_commands(t_stack *stack_a, t_stack *stack_b)
 		terminate(stack_a, stack_b, 2);
 	while (s)
 	{
-		comand = ft_lstnew(s);
-		if (comand == NULL)
+		commands = ft_lstnew(s);
+		if (commands == NULL)
 		{
 			free(s);
 			ft_lstclear(&start, free);
 			terminate(stack_a, stack_b, 2);
 		}
-		ft_lstadd_back(&start, comand);
+		ft_lstadd_back(&start, commands);
 		s = get_next_line(0);
 	}
 	return (start);
+}
+
+static	int	checking(t_list *commands)
+{
+	if (ft_strcmp(commands->content, "sa\n") == 0)
+		return (0);
+	if (ft_strcmp(commands->content, "sb\n") == 0)
+		return (0);
+	if (ft_strcmp(commands->content, "ss\n") == 0)
+		return (0);
+	if (ft_strcmp(commands->content, "pa\n") == 0)
+		return (0);
+	if (ft_strcmp(commands->content, "pb\n") == 0)
+		return (0);
+	if (ft_strcmp(commands->content, "ra\n") == 0)
+		return (0);
+	if (ft_strcmp(commands->content, "rb\n") == 0)
+		return (0);
+	if (ft_strcmp(commands->content, "rr\n") == 0)
+		return (0);
+	if (ft_strcmp(commands->content, "rra\n") == 0)
+		return (0);
+	if (ft_strcmp(commands->content, "rrb\n") == 0)
+		return (0);
+	if (ft_strcmp(commands->content, "rrr\n") == 0)
+		return (0);	
+	return (1);
+}
+
+static	void	check(t_stack *stack_a, t_stack *stack_b, t_list *commands)
+{
+	t_list	*start;
+	int		error;
+
+	start = commands;
+	while (commands)
+	{
+		error = checking(commands);
+		if (error == 1)
+		{
+			ft_lstclear(&start, free);
+			terminate(stack_a, stack_b, 3);	
+		}
+		commands = commands->next;
+	}
+}
+
+t_list	*parser_commands(t_stack *stack_a, t_stack *stack_b)
+{
+	t_list	*commands;
+
+	commands = get_commands(stack_a, stack_b);
+	check(stack_a, stack_b, commands);
+	return (commands);
 }

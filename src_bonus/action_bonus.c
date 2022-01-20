@@ -8,7 +8,7 @@ void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
 void	print(t_stack *stack_a, t_stack *stack_b);
 
-void	check_swap(t_stack **stack_a, t_stack **stack_b, char c)
+static void	check_swap(t_stack **stack_a, t_stack **stack_b, char c)
 {
 	if (c == 'a')
 		swap(*stack_a);
@@ -21,7 +21,7 @@ void	check_swap(t_stack **stack_a, t_stack **stack_b, char c)
 	}
 }
 
-void	check_push(t_stack **stack_a, t_stack **stack_b, char c)
+static void	check_push(t_stack **stack_a, t_stack **stack_b, char c)
 {
 	if (c == 'a')
 		push(stack_b, stack_a);
@@ -29,7 +29,7 @@ void	check_push(t_stack **stack_a, t_stack **stack_b, char c)
 		push(stack_a, stack_b);
 }
 
-void	check_rotate(t_stack **stack_a, t_stack **stack_b, char c)
+static void	check_rotate(t_stack **stack_a, t_stack **stack_b, char c)
 {
 	if (c == 'a')
 		rotate(stack_a);
@@ -42,7 +42,7 @@ void	check_rotate(t_stack **stack_a, t_stack **stack_b, char c)
 	}
 }
 
-void	check_reverse_rotate(t_stack **stack_a, t_stack **stack_b, char c)
+static void	check_reverse_rotate(t_stack **stack_a, t_stack **stack_b, char c)
 {
 	if (c == 'a')
 		reverse_rotate(stack_a);
