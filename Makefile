@@ -23,15 +23,15 @@ libft		:
 
 clean		:
 				$(RM) $(OBJS)
-				make -C libft clean
 				make -C src clean
 				make -C src_bonus clean
+				make -C libft clean
 
 fclean		:	clean
 				$(RM) $(NAME)
-				make -C libft fclean
 				make -C src fclean
 				make -C src_bonus fclean
+				make -C libft fclean
 				
 re			:	fclean all
 
