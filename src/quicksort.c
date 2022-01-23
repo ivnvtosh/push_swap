@@ -50,11 +50,17 @@ void	send_in_stack_b(t_stack **stack_a, t_stack **stack_b, int count, t_var var)
 	}
 }
 
+int	polovina(t_stack **stack_a, t_stack **stack_b, int count);
+
 void	quicksort(t_stack **stack_a, t_stack **stack_b, int count)
 {
 	t_var	var;
+	int		up;
 
 	var = get_min_mid_max(*stack_a, count); 
-	send_in_stack_b(stack_a, stack_b, count, var);
+	// send_in_stack_b(stack_a, stack_b, count, var);
+	up = count;
+	while (up >= 2)
+		up = polovina(stack_a, stack_b, up);
 
 }
