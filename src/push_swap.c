@@ -15,7 +15,7 @@
 
 t_stack	*parser(int *count, char **numbers);
 void	print(t_stack *stack_a, t_stack *stack_b);
-void	handsort(t_stack **stack_a, t_stack **stack_b, int count);
+void	quicksort(t_stack **stack_a, t_stack **stack_b, int count);
 void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
 
 void	push_swap(int count, char **numbers)
@@ -25,7 +25,6 @@ void	push_swap(int count, char **numbers)
 
 	stack_a = parser(&count, numbers);
 	stack_b = NULL;
-	if (count < 6)
-		handsort(&stack_a, &stack_b, count);
+	quicksort(&stack_a, &stack_b, count);
 	terminate(stack_a, stack_b, 0);
 }

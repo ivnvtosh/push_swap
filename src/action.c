@@ -66,7 +66,7 @@ static void	check_reverse_rotate(t_stack **stack_a, t_stack **stack_b, char c)
 	}
 }
 
-void	stack_action(t_stack **stack_a, t_stack **stack_b, const char *s)
+void	action(t_stack **stack_a, t_stack **stack_b, const char *s)
 {
 	ft_putendl_fd(s, 1);
 	if (*s == 's')

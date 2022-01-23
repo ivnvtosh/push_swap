@@ -16,12 +16,13 @@ HEADER		=	   push_swap.h
 LIBFT		=	../libft/libft.a
 
 SRCS		=	action.c	\
-				handsort.c	\
+				get_mmm.c	\
 				main.c		\
 				parser.c	\
 				print.c		\
 				push_swap.c	\
 				push.c		\
+				quicksort.c	\
 				rotate.c	\
 				swap.c		\
 				terminate.c	\
