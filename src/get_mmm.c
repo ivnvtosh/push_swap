@@ -91,28 +91,3 @@ t_var	get_min_mid_max(t_stack *stack, int count)
 	// printf("max = %d\n", var.max);
 	return (var);
 }
-
-void	action(t_stack **stack_a, t_stack **stack_b, const char *s);
-
-int	polovina(t_stack **stack_a, t_stack **stack_b, int count)
-{
-	int	up;
-	int	mid;
-
-	up = 0;
-	mid = get_mid(*stack_a, count);
-	while (count > 0)
-	{
-		if (mid >= (*stack_a)->number)
-		{
-			action(stack_a, stack_b, "pb");
-		}
-		else
-		{
-			action(stack_a, stack_b, "ra");
-			up++;
-		}
-		count--;
-	}
-	return (up);
-}
