@@ -24,6 +24,7 @@ SRCS		=	action.c	\
 				push.c		\
 				quicksort.c	\
 				rotate.c	\
+				sort.c		\
 				swap.c		\
 				terminate.c	\
 				utils.c
