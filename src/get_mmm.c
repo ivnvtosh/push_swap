@@ -86,8 +86,5 @@ t_var	get_min_mid_max(t_stack *stack, int count)
 	var.min = get_min(stack, count);
 	var.mid = get_mid(stack, count);
 	var.max = get_max(stack, count);
-	// printf("min = %d\n", var.min);
-	// printf("mid = %d\n", var.mid);
-	// printf("max = %d\n", var.max);
 	return (var);
 }

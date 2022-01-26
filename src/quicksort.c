@@ -54,21 +54,19 @@ void	search_place(t_stack **stack_a, t_stack **stack_b, t_var var)
 {
 	while ((*stack_a)->number > (*stack_b)->number)
 		action(stack_a, stack_b, "pa");
-
 	while ((*stack_a)->number < (*stack_b)->number)
 		action(stack_a, stack_b, "ra");
 		action(stack_a, stack_b, "pa");
 	while ((*stack_a)->number > (*stack_b)->number && (*stack_a)->prev->number > var.mid)
 		action(stack_a, stack_b, "rra");
 		action(stack_a, stack_b, "pa");
-	
 }
 
 void	quicksort(t_stack **stack_a, t_stack **stack_b, int count)
 {
 	t_var	var;
-	
-	var = get_min_mid_max(*stack_a, count); 
+
+	var = get_min_mid_max(*stack_a, count);
 	send_in_stack_b(stack_a, stack_b, count, var);
 	search_place(stack_a, stack_b, var);
 }
