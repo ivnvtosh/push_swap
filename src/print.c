@@ -15,27 +15,27 @@
 
 int	stack_len(t_stack *stack);
 
-void	print(t_stack *stack_a, t_stack *stack_b)
+void	print(t_stack *a, t_stack *b)
 {
-	int	a;
-	int	b;
+	int	alen;
+	int	blen;
 
-	a = stack_len(stack_a);
-	b = stack_len(stack_b);
+	alen = stack_len(a);
+	blen = stack_len(b);
 	printf("\x1b[4m         \n");
-	while (a > 0 || b > 0)
+	while (alen > 0 || blen > 0)
 	{
-		if (a-- > 0)
+		if (alen-- > 0)
 		{
-			printf("|%3d|", stack_a->number);
-			stack_a = stack_a->next;
+			printf("|%3d|", a->number);
+			a = a->next;
 		}
 		else
 			printf("|   |");
-		if (b-- > 0)
+		if (blen-- > 0)
 		{
-			printf("%3d|\n", stack_b->number);
-			stack_b = stack_b->next;
+			printf("%3d|\n", b->number);
+			b = b->next;
 		}
 		else
 			printf("   |\n");

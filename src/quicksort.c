@@ -21,52 +21,45 @@ typedef struct s_var
 }	t_var;
 
 t_var	get_min_mid_max(t_stack *stack, int count);
-void	action(t_stack **stack_a, t_stack **stack_b, const char *s);
-void	print(t_stack *stack_a, t_stack *stack_b);
+void	action(t_stack **a, t_stack **b, const char *s);
+void	print(t_stack *a, t_stack *b);
 
-void	send_in_stack_b(t_stack **stack_a, t_stack **stack_b, int count, t_var var)
+void	send_in_b(t_stack **a, t_stack **b, int count, t_var var)
 {
 	while (count > 0)
 	{
-		if (var.min == (*stack_a)->number || var.max == (*stack_a)->number)
-			action(stack_a, stack_b, "ra");
+		if (var.min == (*a)->number || var.max == (*a)->number)
+			action(a, b, "ra");
 		else
 		{
-			if (var.mid < (*stack_a)->number)
-				action(stack_a, stack_b, "pb");
+			if (var.mid < (*a)->number)
+				action(a, b, "pb");
 			else
 			{
-				action(stack_a, stack_b, "pb");
-				if (var.min == (*stack_a)->number || var.max == (*stack_a)->number)
+				action(a, b, "pb");
+				if (var.min == (*a)->number || var.max == (*a)->number)
 				{
-					action(stack_a, stack_b, "rr");
+					action(a, b, "rr");
 					count--;
 				}
 				else
-					action(stack_a, stack_b, "rb");
+					action(a, b, "rb");
 			}
 		}
 		count--;
 	}
 }
 
-void	search_place(t_stack **stack_a, t_stack **stack_b, t_var var)
-{
-	while ((*stack_a)->number > (*stack_b)->number)
-		action(stack_a, stack_b, "pa");
-	while ((*stack_a)->number < (*stack_b)->number)
-		action(stack_a, stack_b, "ra");
-		action(stack_a, stack_b, "pa");
-	while ((*stack_a)->number > (*stack_b)->number && (*stack_a)->prev->number > var.mid)
-		action(stack_a, stack_b, "rra");
-		action(stack_a, stack_b, "pa");
-}
+// void	search_place(t_stack **a, t_stack **b, t_var var)
+// {
 
-void	quicksort(t_stack **stack_a, t_stack **stack_b, int count)
+// }
+
+void	quicksort(t_stack **a, t_stack **b, int count)
 {
 	t_var	var;
 
-	var = get_min_mid_max(*stack_a, count);
-	send_in_stack_b(stack_a, stack_b, count, var);
-	search_place(stack_a, stack_b, var);
+	var = get_min_mid_max(*a, count);
+	send_in_b(a, b, count, var);
+	// search_place(a, b, var);
 }

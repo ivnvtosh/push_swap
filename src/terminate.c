@@ -23,9 +23,9 @@ void	leave(int code)
 	exit(code);
 }
 
-void	terminate(t_stack *stack_a, t_stack *stack_b, int code)
+void	terminate(t_stack *a, t_stack *b, int code)
 {
-	clean(stack_a);
-	clean(stack_b);
+	clean(a);
+	clean(b);
 	leave(code);
 }

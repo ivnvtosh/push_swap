@@ -13,9 +13,9 @@
 #include "../libft/libft.h"
 #include "push_swap.h"
 
-void	quicksort(t_stack **stack_a, t_stack **stack_b, int count);
+void	quicksort(t_stack **a, t_stack **b, int count);
 
-void	sort(t_stack **stack_a, t_stack **stack_b, int count)
+void	sort(t_stack **a, t_stack **b, int count)
 {
-	quicksort(stack_a, stack_b, count);
+	quicksort(a, b, count);
 }

@@ -14,16 +14,16 @@
 #include "push_swap.h"
 
 t_stack	*parser(int *count, char **numbers);
-void	sort(t_stack **stack_a, t_stack **stack_b, int count);
-void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
+void	sort(t_stack **a, t_stack **b, int count);
+void	terminate(t_stack *a, t_stack *b, int code);
 
 void	push_swap(int count, char **numbers)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack	*a;
+	t_stack	*b;
 
-	stack_a = parser(&count, numbers);
-	stack_b = NULL;
-	sort(&stack_a, &stack_b, count);
-	terminate(stack_a, stack_b, 0);
+	a = parser(&count, numbers);
+	b = NULL;
+	sort(&a, &b, count);
+	terminate(a, b, 0);
 }

@@ -16,7 +16,7 @@
 #include <limits.h>
 
 void	leave(int code);
-void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
+void	terminate(t_stack *a, t_stack *b, int code);
 
 static void	check(char **numbers)
 {
@@ -39,7 +39,7 @@ static void	check(char **numbers)
 	}
 }
 
-static t_stack	*stack_allocate(char **numbers)
+static t_stack	*allocate(char **numbers)
 {
 	t_stack	*stack;
 	t_stack	*start;
@@ -95,7 +95,7 @@ static t_stack	*get_stack(char **numbers)
 	t_stack	*stack;
 
 	check(numbers);
-	stack = stack_allocate(numbers);
+	stack = allocate(numbers);
 	duplicates_sorted(stack);
 	return (stack);
 }
