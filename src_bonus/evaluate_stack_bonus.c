@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   evaluate_stack_bonus.c                             :+:      :+:    :+:   */
+/*   evaluate_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,17 +13,17 @@
 #include "checker_bonus.h"
 #include "../libft/libft.h"
 
-void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
+void	terminate(t_stack *a, t_stack *b, int code);
 
-void	evaluate_stack(t_stack *stack_a, t_stack *stack_b)
+void	evaluate_stack(t_stack *a, t_stack *b)
 {
 	t_stack	*start;
 
-	if (stack_b != NULL)
-		terminate(stack_a, stack_b, 3);
-	start = stack_a;
-	while (stack_a->next != start && stack_a->number < stack_a->next->number)
-		stack_a = stack_a->next;
-	if (stack_a->next != start)
-		terminate(start, stack_b, 3);
+	if (b != NULL)
+		terminate(a, b, 3);
+	start = a;
+	while (a->next != start && a->number < a->next->number)
+		a = a->next;
+	if (a->next != start)
+		terminate(start, b, 3);
 }

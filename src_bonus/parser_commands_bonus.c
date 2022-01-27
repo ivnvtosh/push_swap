@@ -15,9 +15,9 @@
 #include "../get_next_line/get_next_line.h"
 #include <stdlib.h>
 
-void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
+void	terminate(t_stack *a, t_stack *b, int code);
 
-static t_list	*get_commands(t_stack *stack_a, t_stack *stack_b)
+static t_list	*get_commands(t_stack *a, t_stack *b)
 {
 	t_list	*commands;
 	t_list	*start;
@@ -26,7 +26,7 @@ static t_list	*get_commands(t_stack *stack_a, t_stack *stack_b)
 	start = NULL;
 	s = get_next_line(0);
 	if (s == NULL)
-		terminate(stack_a, stack_b, 2);
+		terminate(a, b, 2);
 	while (s)
 	{
 		commands = ft_lstnew(s);
@@ -34,7 +34,7 @@ static t_list	*get_commands(t_stack *stack_a, t_stack *stack_b)
 		{
 			free(s);
 			ft_lstclear(&start, free);
-			terminate(stack_a, stack_b, 2);
+			terminate(a, b, 2);
 		}
 		ft_lstadd_back(&start, commands);
 		s = get_next_line(0);
@@ -69,7 +69,7 @@ static	int	checking(t_list *commands)
 	return (1);
 }
 
-static	void	check(t_stack *stack_a, t_stack *stack_b, t_list *commands)
+static	void	check(t_stack *a, t_stack *b, t_list *commands)
 {
 	t_list	*start;
 	int		error;
@@ -81,17 +81,17 @@ static	void	check(t_stack *stack_a, t_stack *stack_b, t_list *commands)
 		if (error == 1)
 		{
 			ft_lstclear(&start, free);
-			terminate(stack_a, stack_b, 3);
+			terminate(a, b, 3);
 		}
 		commands = commands->next;
 	}
 }
 
-t_list	*parser_commands(t_stack *stack_a, t_stack *stack_b)
+t_list	*parser_commands(t_stack *a, t_stack *b)
 {
 	t_list	*commands;
 
-	commands = get_commands(stack_a, stack_b);
-	check(stack_a, stack_b, commands);
+	commands = get_commands(a, b);
+	check(a, b, commands);
 	return (commands);
 }
