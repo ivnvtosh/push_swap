@@ -40,7 +40,7 @@ OBJS		=	$(SRCS:.c=.o)
 all			:	$(NAME)
 
 $(NAME)		:	$(OBJS)
-				$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $(NAME)
+				$(CC) $(LIBFT) $(OBJS) -o $(NAME)
 
 %.o			:	%.c $(HEADER) $(LIBFT)
 				$(CC) $(CFLAGS) -c $< -o $@
