@@ -20,7 +20,7 @@ typedef struct s_var
 	int	max;
 }	t_var;
 
-int	get_min(t_stack *stack, int count)
+static int	get_min(t_stack *stack, int count)
 {
 	int	min;
 
@@ -39,7 +39,7 @@ int	get_min(t_stack *stack, int count)
 	return (min);
 }
 
-int	get_mid(t_stack *stack, int count)
+static int	get_mid(t_stack *stack, int count)
 {
 	int	mid;
 	int	tmp;
@@ -60,7 +60,7 @@ int	get_mid(t_stack *stack, int count)
 	return (mid);
 }
 
-int	get_max(t_stack *stack, int count)
+static int	get_max(t_stack *stack, int count)
 {
 	int	max;
 

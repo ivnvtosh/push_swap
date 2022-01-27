@@ -24,7 +24,7 @@ t_var	get_min_mid_max(t_stack *stack, int count);
 void	action(t_stack **a, t_stack **b, const char *s);
 void	print(t_stack *a, t_stack *b);
 
-void	send_in_b(t_stack **a, t_stack **b, int count, t_var var)
+static void	send_from_a_to_b(t_stack **a, t_stack **b, int count, t_var var)
 {
 	while (count > 0)
 	{
@@ -60,6 +60,6 @@ void	quicksort(t_stack **a, t_stack **b, int count)
 	t_var	var;
 
 	var = get_min_mid_max(*a, count);
-	send_in_b(a, b, count, var);
+	send_from_a_to_b(a, b, count, var);
 	// search_place(a, b, var);
 }

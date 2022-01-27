@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ccamie <marvto@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 08:19:56 by ccamie            #+#    #+#             */
 /*   Updated: 2022/01/14 08:20:02 by ccamie           ###   ########.fr       */
@@ -25,24 +25,24 @@ static void	disconnect(t_stack **from)
 	}
 }
 
-static void	connect(t_stack *elem, t_stack **in)
+static void	connect(t_stack *elem, t_stack **to)
 {
-	if (*in == NULL)
+	if (*to == NULL)
 	{
 		elem->next = elem;
 		elem->prev = elem;
 	}
 	else
 	{
-		elem->next = *in;
-		elem->prev = (*in)->prev;
-		(*in)->prev->next = elem;
-		(*in)->prev = elem;
+		elem->next = *to;
+		elem->prev = (*to)->prev;
+		(*to)->prev->next = elem;
+		(*to)->prev = elem;
 	}
-	*in = elem;
+	*to = elem;
 }
 
-void	push(t_stack **from, t_stack **in)
+void	push(t_stack **from, t_stack **to)
 {
 	t_stack	*elem;
 
@@ -50,5 +50,5 @@ void	push(t_stack **from, t_stack **in)
 	if (elem == NULL)
 		return ;
 	disconnect(from);
-	connect(elem, in);
+	connect(elem, to);
 }
