@@ -17,5 +17,7 @@ void	quicksort(t_stack **a, t_stack **b, int count);
 
 void	sort(t_stack **a, t_stack **b, int count)
 {
+	if (count == 2)
+		return (ft_putstr_fd("sa\n", 1));
 	quicksort(a, b, count);
 }
