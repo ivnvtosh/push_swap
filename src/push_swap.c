@@ -15,6 +15,7 @@
 
 t_stack	*parser(char **numbers);
 void	sort(t_stack **a, t_stack **b, int count);
+void	replace(t_stack *stack, int count);
 void	terminate(t_stack *a, t_stack *b, int code);
 
 void	push_swap(int count, char **numbers)
@@ -24,6 +25,7 @@ void	push_swap(int count, char **numbers)
 
 	a = parser(numbers);
 	b = NULL;
+	replace(a, count);
 	sort(&a, &b, count);
 	terminate(a, b, 0);
 }

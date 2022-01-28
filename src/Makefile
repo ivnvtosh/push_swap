@@ -23,6 +23,7 @@ SRCS		=	action.c	\
 				push_swap.c	\
 				push.c		\
 				quicksort.c	\
+				replace.c	\
 				rotate.c	\
 				sort.c		\
 				swap.c		\
