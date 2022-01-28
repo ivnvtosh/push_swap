@@ -17,6 +17,17 @@
 
 void	leave(int code);
 void	terminate(t_stack *a, t_stack *b, int code);
+int		stack_len(t_stack *stack);
+
+typedef struct s_var
+{
+	int	min;
+	int	mid;
+	int	max;
+}	t_var;
+
+int	get_min(t_stack *stack, int count);
+t_var	get_min_mid_max(t_stack *stack, int count);
 
 static void	check(char **numbers)
 {
@@ -90,6 +101,78 @@ static void	duplicates_sorted(t_stack *stack)
 		terminate(start, NULL, 0);
 }
 
+static int	get_next(t_stack *stack, int count, int find)
+{
+	int	min;
+
+	min = INT_MAX;
+	while (count > 0)
+	{
+		if (min > stack->number && find < stack->number)
+			min = stack->number;
+		stack = stack->next;
+		count--;
+	}
+	return (min);
+}
+
+static void	replacing_with_indexes(t_stack *stack)
+{
+	t_stack	*start;
+	int		count;
+	int		*index;
+	int		find;
+	int		i;
+	int		j;
+
+	count = stack_len(stack);
+	index = (int *)malloc(sizeof(int *) * (count));
+	if (index == NULL)
+		terminate(stack, NULL, 2);
+	find = get_min(stack, count);
+	i = 0;
+	j = 0;
+	start = stack;
+	while (j != count)
+	{
+		if (stack->number == find)
+		{
+			find = get_next(stack, count, find);
+			index[i] = j + 1;
+			j++;
+		}
+		stack = stack->next;
+		i++;
+		if (i == count)
+			i = 0;
+	}
+	stack = start;
+	i = 0;
+	while (i != count)
+	{
+		stack->number = index[i++];
+		stack = stack->next;
+	}
+	free(index);
+}
+
+void	print(t_stack *a, t_stack *b);
+
+t_stack	*parser(char **numbers)
+{
+	t_stack	*stack;
+
+	check(numbers);
+	stack = allocate(numbers);
+	duplicates_sorted(stack);
+	print(stack, NULL);
+	replacing_with_indexes(stack);
+	print(stack, NULL);
+	return (stack);
+}
+
+/*
+
 static t_stack	*get_stack(char **numbers)
 {
 	t_stack	*stack;
@@ -128,3 +211,5 @@ t_stack	*parser(int *count, char **numbers)
 		stack = get_stack(numbers);
 	return (stack);
 }
+
+*/

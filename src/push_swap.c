@@ -13,7 +13,7 @@
 #include "../libft/libft.h"
 #include "push_swap.h"
 
-t_stack	*parser(int *count, char **numbers);
+t_stack	*parser(char **numbers);
 void	sort(t_stack **a, t_stack **b, int count);
 void	terminate(t_stack *a, t_stack *b, int code);
 
@@ -22,7 +22,7 @@ void	push_swap(int count, char **numbers)
 	t_stack	*a;
 	t_stack	*b;
 
-	a = parser(&count, numbers);
+	a = parser(numbers);
 	b = NULL;
 	sort(&a, &b, count);
 	terminate(a, b, 0);

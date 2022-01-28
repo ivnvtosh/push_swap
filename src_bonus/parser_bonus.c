@@ -90,6 +90,18 @@ static void	duplicates_sorted(t_stack *stack)
 		terminate(start, NULL, 0);
 }
 
+t_stack	*parser(char **numbers)
+{
+	t_stack	*stack;
+
+	check(numbers);
+	stack = allocate(numbers);
+	duplicates_sorted(stack);
+	return (stack);
+}
+
+/*
+
 static t_stack	*get_stack(char **numbers)
 {
 	t_stack	*stack;
@@ -128,3 +140,5 @@ t_stack	*parser(int *count, char **numbers)
 		stack = get_stack(numbers);
 	return (stack);
 }
+
+*/

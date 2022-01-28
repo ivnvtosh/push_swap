@@ -24,8 +24,8 @@ SRCS		=	action_bonus.c			\
 				checker_bonus.c			\
 				evaluate_stack_bonus.c	\
 				main_bonus.c			\
+				parse_commands_bonus.c	\
 				parser_bonus.c			\
-				parser_commands_bonus.c	\
 				push_bonus.c			\
 				rotate_bonus.c			\
 				swap_bonus.c			\

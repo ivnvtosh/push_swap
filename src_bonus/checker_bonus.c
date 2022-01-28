@@ -13,8 +13,8 @@
 #include "checker_bonus.h"
 #include "../libft/libft.h"
 
-t_stack	*parser(int *count, char **numbers);
-t_list	*parser_commands(t_stack *a, t_stack *b);
+t_stack	*parser(char **numbers);
+t_list	*parse_commands(t_stack *a, t_stack *b);
 void	apply_commands(t_stack **a, t_stack **b, t_list *commands);
 void	evaluate_stack(t_stack *a, t_stack *b);
 void	terminate(t_stack *a, t_stack *b, int code);
@@ -25,7 +25,7 @@ void	checker(int count, char **numbers)
 	t_stack	*b;
 	t_list	*commands;
 
-	a = parser(&count, numbers);
+	a = parser(numbers);
 	b = NULL;
 	commands = parser_commands(a, b);
 	apply_commands(&a, &b, commands);
