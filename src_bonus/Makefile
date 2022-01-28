@@ -43,7 +43,7 @@ OBJS		=	$(SRCS:.c=.o) $(GNL:.c=.o)
 all			:	$(NAME)
 
 $(NAME)		:	$(OBJS)
-				$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $(NAME)
+				$(CC) $(LIBFT) $(OBJS) -o $(NAME)
 
 %.o			:	%.c $(HEADER) $(HEADER_GNL) $(LIBFT)
 				$(CC) $(CFLAGS) -c $< -o $@
