@@ -14,6 +14,7 @@
 #include "../libft/libft.h"
 #include <stdlib.h>
 
+t_list	*parse_commands(t_stack *a, t_stack *b);
 void	clean(t_stack *stack);
 
 void	leave(int code)
@@ -27,8 +28,26 @@ void	leave(int code)
 	exit(code);
 }
 
+static int	check(t_stack *a, t_stack *b)
+{
+	t_list	*commands;
+	
+	commands = parse_commands(a, b);
+	if (commands == NULL)
+	{
+		return (5);
+	}
+	else
+	{
+		ft_lstclear(&commands, free);
+		return (3);
+	}
+}
+
 void	terminate(t_stack *a, t_stack *b, int code)
 {
+	if (code == 10)
+		code = check(a, b);
 	clean(a);
 	clean(b);
 	leave(code);

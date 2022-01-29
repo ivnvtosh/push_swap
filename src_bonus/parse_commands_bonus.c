@@ -25,8 +25,6 @@ static t_list	*get_commands(t_stack *a, t_stack *b)
 
 	start = NULL;
 	s = get_next_line(0);
-	if (s == NULL)
-		terminate(a, b, 2);
 	while (s)
 	{
 		commands = ft_lstnew(s);
@@ -87,7 +85,7 @@ static	void	check(t_stack *a, t_stack *b, t_list *commands)
 	}
 }
 
-t_list	*parser_commands(t_stack *a, t_stack *b)
+t_list	*parse_commands(t_stack *a, t_stack *b)
 {
 	t_list	*commands;
 

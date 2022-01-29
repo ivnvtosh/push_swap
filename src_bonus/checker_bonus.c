@@ -19,7 +19,7 @@ void	apply_commands(t_stack **a, t_stack **b, t_list *commands);
 void	evaluate_stack(t_stack *a, t_stack *b);
 void	terminate(t_stack *a, t_stack *b, int code);
 
-void	checker(int count, char **numbers)
+void	checker(char **numbers)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -27,7 +27,7 @@ void	checker(int count, char **numbers)
 
 	a = parser(numbers);
 	b = NULL;
-	commands = parser_commands(a, b);
+	commands = parse_commands(a, b);
 	apply_commands(&a, &b, commands);
 	evaluate_stack(a, b);
 	terminate(a, b, 5);

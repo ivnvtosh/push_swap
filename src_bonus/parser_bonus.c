@@ -18,28 +18,25 @@
 void	leave(int code);
 void	terminate(t_stack *a, t_stack *b, int code);
 
-static void	check(char **numbers)
+static int	check(t_stack *start, char *numbers)
 {
 	long long	n;
 	int			i;
 
-	while (*numbers)
-	{
-		i = 0;
-		if ((*numbers)[i] == '-')
-			i++;
-		while (ft_isdigit((*numbers)[i]))
-			i++;
-		if ((*numbers)[i])
-			leave(1);
-		n = ft_atoll(*numbers);
-		if (n < INT_MIN || n > INT_MAX)
-			leave(1);
-		numbers++;
-	}
+	i = 0;
+	if (numbers[i] == '-')
+		i++;
+	while (ft_isdigit(numbers[i]))
+		i++;
+	if (numbers[i])
+		terminate(start, NULL, 1);
+	n = ft_atoll(numbers);
+	if (n < INT_MIN || n > INT_MAX)
+		terminate(start, NULL, 1);
+	return (n);
 }
 
-static t_stack	*allocate(char **numbers)
+static t_stack	*check_allocate(char **numbers)
 {
 	t_stack	*stack;
 	t_stack	*start;
@@ -48,8 +45,8 @@ static t_stack	*allocate(char **numbers)
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
 		leave(2);
-	stack->number = ft_atoi(*numbers++);
 	start = stack;
+	stack->number = check(start, *numbers++);
 	while (*numbers)
 	{
 		stack->next = (t_stack *)malloc(sizeof(t_stack));
@@ -58,7 +55,7 @@ static t_stack	*allocate(char **numbers)
 		prev = stack;
 		stack = stack->next;
 		stack->prev = prev;
-		stack->number = ft_atoi(*numbers++);
+		stack->number = check(start, *numbers++);
 	}
 	stack->next = start;
 	start->prev = stack;
@@ -87,58 +84,14 @@ static void	duplicates_sorted(t_stack *stack)
 	while (stack->next != start && stack->number < stack->next->number)
 		stack = stack->next;
 	if (stack->next == start)
-		terminate(start, NULL, 0);
+		terminate(start, NULL, 10);
 }
 
 t_stack	*parser(char **numbers)
 {
 	t_stack	*stack;
 
-	check(numbers);
-	stack = allocate(numbers);
+	stack = check_allocate(numbers);
 	duplicates_sorted(stack);
 	return (stack);
 }
-
-/*
-
-static t_stack	*get_stack(char **numbers)
-{
-	t_stack	*stack;
-
-	check(numbers);
-	stack = allocate(numbers);
-	duplicates_sorted(stack);
-	return (stack);
-}
-
-t_stack	*parser(int *count, char **numbers)
-{
-	t_stack	*stack;
-	char	**temp;
-	int		i;
-
-	if (*count == 1)
-	{
-		temp = ft_split(*numbers, 32);
-		if (temp == NULL)
-			leave(2);
-		if (temp[1] == NULL)
-		{
-			free(*temp);
-			free(temp);
-			leave(1);
-		}
-		stack = get_stack(temp);
-		i = 0;
-		while (temp[i])
-			free(temp[i++]);
-		free(temp);
-		*count = i;
-	}
-	else
-		stack = get_stack(numbers);
-	return (stack);
-}
-
-*/

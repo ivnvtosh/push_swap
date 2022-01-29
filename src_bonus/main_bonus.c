@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	checker(int count, char **numbers);
+void	checker(char **numbers);
 
 int	main(int argc, char **argv)
 {
 	if (argc == 1)
 		return (1);
-	checker(--argc, ++argv);
+	checker(++argv);
 	return (10);
 }
