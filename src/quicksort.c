@@ -15,9 +15,9 @@
 
 typedef struct s_var
 {
-	int	min;
-	int	mid;
-	int	max;
+	unsigned int	min;
+	unsigned int	mid;
+	unsigned int	max;
 }	t_var;
 
 t_var	get_min_mid_max(t_stack *stack, int count);
@@ -28,16 +28,16 @@ static void	send_from_a_to_b(t_stack **a, t_stack **b, int count, t_var var)
 {
 	while (count > 0)
 	{
-		if (var.min == (*a)->number || var.max == (*a)->number)
+		if (var.min == (*a)->index || var.max == (*a)->index)
 			action(a, b, "ra");
 		else
 		{
-			if (var.mid < (*a)->number)
+			if (var.mid < (*a)->index)
 				action(a, b, "pb");
 			else
 			{
 				action(a, b, "pb");
-				if (var.min == (*a)->number || var.max == (*a)->number)
+				if (var.min == (*a)->index || var.max == (*a)->index)
 				{
 					action(a, b, "rr");
 					count--;

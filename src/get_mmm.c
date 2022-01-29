@@ -15,44 +15,44 @@
 
 typedef struct s_var
 {
-	int	min;
-	int	mid;
-	int	max;
+	unsigned int	min;
+	unsigned int	mid;
+	unsigned int	max;
 }	t_var;
 
-int	get_min(t_stack *stack, int count)
+static unsigned int	get_min(t_stack *stack, int count)
 {
-	int	min;
+	unsigned int	min;
 
 	if (stack == NULL)
 		return (0);
 	if (stack == stack->next)
-		return (stack->number);
+		return (stack->index);
 	min = INT_MAX;
 	while (count > 0)
 	{
-		if (min > stack->number)
-			min = stack->number;
+		if (min > stack->index)
+			min = stack->index;
 		stack = stack->next;
 		count--;
 	}
 	return (min);
 }
 
-int	get_mid(t_stack *stack, int count)
+static unsigned int	get_mid(t_stack *stack, int count)
 {
-	int	mid;
-	int	tmp;
+	unsigned int	mid;
+	unsigned int	tmp;
 
 	if (stack == NULL)
 		return (0);
 	if (stack == stack->next)
-		return (stack->number);
+		return (stack->index);
 	mid = 0;
 	tmp = count;
 	while (count > 0)
 	{
-		mid += stack->number;
+		mid += stack->index;
 		stack = stack->next;
 		count--;
 	}
@@ -60,19 +60,19 @@ int	get_mid(t_stack *stack, int count)
 	return (mid);
 }
 
-int	get_max(t_stack *stack, int count)
+static unsigned int	get_max(t_stack *stack, int count)
 {
-	int	max;
+	unsigned int	max;
 
 	if (stack == NULL)
 		return (0);
 	if (stack == stack->next)
-		return (stack->number);
+		return (stack->index);
 	max = INT_MIN;
 	while (count > 0)
 	{
-		if (max < stack->number)
-			max = stack->number;
+		if (max < stack->index)
+			max = stack->index;
 		stack = stack->next;
 		count--;
 	}

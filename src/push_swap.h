@@ -18,6 +18,7 @@
 typedef struct s_stack
 {
 	int				number;
+	unsigned int	index;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;

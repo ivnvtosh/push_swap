@@ -13,32 +13,45 @@
 #include "push_swap.h"
 #include <stdio.h>
 
+typedef struct s_len
+{
+	int	a;
+	int	b;
+}	t_len;
+
 int	stack_len(t_stack *stack);
+
+t_len	get_len(t_stack *a, t_stack *b)
+{
+	t_len	len;
+
+	len.a = stack_len(a);
+	len.b = stack_len(b);
+	return (len);
+}
 
 void	print(t_stack *a, t_stack *b)
 {
-	int	alen;
-	int	blen;
+	t_len	len;
 
-	alen = stack_len(a);
-	blen = stack_len(b);
-	printf("\x1b[4m         \n");
-	while (alen > 0 || blen > 0)
+	len = get_len(a, b);
+	printf("\x1b[4m                 \n");
+	while (len.a > 0 || len.b > 0)
 	{
-		if (alen-- > 0)
+		if (len.a-- > 0)
 		{
-			printf("|%3d|", a->number);
+			printf("|%3d|%3u|", a->number, a->index);
 			a = a->next;
 		}
 		else
-			printf("|   |");
-		if (blen-- > 0)
+			printf("|   |   |");
+		if (len.b-- > 0)
 		{
-			printf("%3d|\n", b->number);
+			printf("%3d|%3u|\n", b->number, b->index);
 			b = b->next;
 		}
 		else
-			printf("   |\n");
+			printf("   |   |\n");
 	}
-	printf("| a | b |\n\x1b[0m\n");
+	printf("| a | i | b | i |\n\x1b[0m\n");
 }

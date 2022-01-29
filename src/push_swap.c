@@ -14,9 +14,11 @@
 #include "push_swap.h"
 
 t_stack	*parser(char **numbers);
+void	add_index(t_stack *stack, int count);
 void	sort(t_stack **a, t_stack **b, int count);
-void	replace(t_stack *stack, int count);
 void	terminate(t_stack *a, t_stack *b, int code);
+
+void	print(t_stack *a, t_stack *b);
 
 void	push_swap(int count, char **numbers)
 {
@@ -25,7 +27,7 @@ void	push_swap(int count, char **numbers)
 
 	a = parser(numbers);
 	b = NULL;
-	replace(a, count);
+	add_index(a, count);
 	sort(&a, &b, count);
 	terminate(a, b, 0);
 }

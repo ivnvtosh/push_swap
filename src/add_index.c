@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   replace.c                                          :+:      :+:    :+:   */
+/*   add_index.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,58 +14,53 @@
 #include <stdlib.h>
 #include <limits.h>
 
-int     get_min(t_stack *stack, int count);
-void	terminate(t_stack *a, t_stack *b, int code);
-
-static int	get_next(t_stack *stack, int count, int find)
+static int	get_min(t_stack *stack, int count)
 {
 	int	min;
 
+	if (stack == NULL)
+		return (0);
+	if (stack == stack->next)
+		return (stack->number);
 	min = INT_MAX;
 	while (count > 0)
 	{
-		if (min > stack->number && find < stack->number)
+		if (min > stack->number)
 			min = stack->number;
 		stack = stack->next;
 		count--;
 	}
 	return (min);
 }
-
-void	replace(t_stack *stack, int count)
+static int	get_next(t_stack *stack, int count, int find)
 {
-	t_stack	*start;
-	int		*index;
-	int		find;
-	int		i;
-	int		j;
+	int	var;
 
-	index = (int *)malloc(sizeof(int *) * (count));
-	if (index == NULL)
-		terminate(stack, NULL, 2);
+	var = INT_MAX;
+	while (count > 0)
+	{
+		if (var > stack->number && find < stack->number)
+			var = stack->number;
+		stack = stack->next;
+		count--;
+	}
+	return (var);
+}
+
+void	add_index(t_stack *stack, int count)
+{
+	int	find;
+	int	i;
+
 	find = get_min(stack, count);
 	i = 0;
-	j = 0;
-	start = stack;
-	while (j != count)
+	while (i != count)
 	{
 		if (stack->number == find)
 		{
 			find = get_next(stack, count, find);
-			index[i] = j + 1;
-			j++;
+			stack->index = i++;
 		}
 		stack = stack->next;
-		i++;
-		if (i == count)
-			i = 0;
 	}
-	stack = start;
-	i = 0;
-	while (i != count)
-	{
-		stack->number = index[i++];
-		stack = stack->next;
-	}
-	free(index);
 }
