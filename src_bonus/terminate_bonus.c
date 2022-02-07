@@ -12,9 +12,9 @@
 
 #include "checker_bonus.h"
 #include "../libft/libft.h"
+#include "../get_next_line/get_next_line.h"
 #include <stdlib.h>
 
-t_list	*parse_commands(t_stack *a, t_stack *b);
 void	clean(t_stack *stack);
 
 void	leave(int code)
@@ -30,16 +30,16 @@ void	leave(int code)
 
 static int	check(t_stack *a, t_stack *b)
 {
-	t_list	*commands;
+	char	*s;
 	
-	commands = parse_commands(a, b);
-	if (commands == NULL)
+	s = get_next_line(0);
+	if (s == NULL)
 	{
 		return (5);
 	}
 	else
 	{
-		ft_lstclear(&commands, free);
+		free(s);
 		return (3);
 	}
 }
