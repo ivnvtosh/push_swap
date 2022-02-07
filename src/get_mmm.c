@@ -68,7 +68,7 @@ static unsigned int	get_max(t_stack *stack, int count)
 		return (0);
 	if (stack == stack->next)
 		return (stack->index);
-	max = INT_MIN;
+	max = 0;
 	while (count > 0)
 	{
 		if (max < stack->index)
