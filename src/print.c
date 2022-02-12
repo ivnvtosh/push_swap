@@ -35,23 +35,23 @@ void	print(t_stack *a, t_stack *b)
 	t_len	len;
 
 	len = get_len(a, b);
-	printf("\x1b[4m                 \n");
+	printf("\x1b[4m         \n");
 	while (len.a > 0 || len.b > 0)
 	{
 		if (len.a-- > 0)
 		{
-			printf("|%3d|%3u|", a->number, a->index);
+			printf("|%3u|", a->index);
 			a = a->next;
 		}
 		else
-			printf("|   |   |");
+			printf("|   |");
 		if (len.b-- > 0)
 		{
-			printf("%3d|%3u|\n", b->number, b->index);
+			printf("%3u|\n", b->index);
 			b = b->next;
 		}
 		else
-			printf("   |   |\n");
+			printf("   |\n");
 	}
-	printf("| a | i | b | i |\n\x1b[0m\n");
+	printf("| a | b |\n\x1b[0m\n");
 }

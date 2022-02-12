@@ -16,7 +16,7 @@
 void	chunks(t_stack **a, t_stack **b, int count);
 void	calculate(t_stack *a, t_stack *b, int count);
 t_calc	the_best(t_stack *b, int count);
-void    apply_commands(t_stack *a, t_stack *b, t_calc command);
+void    apply_commands(t_stack **a, t_stack **b, t_calc command);
 void	action(t_stack **a, t_stack **b, const char *s);
 
 void	search(t_stack **a, t_stack **b, unsigned int count)
@@ -50,6 +50,17 @@ void	search(t_stack **a, t_stack **b, unsigned int count)
 
 void	quicksort(t_stack **a, t_stack **b, int count)
 {
+	t_calc	calc;
+
 	chunks(a, b, count);
-	search(a, b, count);
+	calculate(*a, *b, count);
+
+
+	print(*a, *b);
+	calc = the_best(*b, count / 2 - 2);
+	apply_commands(a, b, calc);
+	print(*a, *b);
+
+
+	// search(a, b, count);
 }

@@ -22,7 +22,8 @@ void	rotate(t_stack **stack)
 
 void	reverse_rotate(t_stack **stack)
 {
-	if (*stack == NULL || (*stack) == (*stack)->next)
+	if (*
+	stack == NULL || (*stack) == (*stack)->next)
 		return ;
 	*stack = (*stack)->prev;
 }

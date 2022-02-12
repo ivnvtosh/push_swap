@@ -16,6 +16,9 @@ HEADER		=	   push_swap.h
 LIBFT		=	../libft/libft.a
 
 SRCS		=	action.c	\
+				add_index.c	\
+				apply_commands.c	\
+				calculate.c	\
 				main.c		\
 				chunks.c	\
 				parser.c	\
@@ -23,11 +26,11 @@ SRCS		=	action.c	\
 				push_swap.c	\
 				push.c		\
 				quicksort.c	\
-				add_index.c	\
 				rotate.c	\
 				sort.c		\
 				swap.c		\
 				terminate.c	\
+				the_best.c	\
 				utils.c
 
 CC			=	cc

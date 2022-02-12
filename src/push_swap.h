@@ -37,4 +37,6 @@ typedef struct s_stack
 	t_calc			calc;
 }	t_stack;
 
+void	print(t_stack *a, t_stack *b);
+
 #endif
