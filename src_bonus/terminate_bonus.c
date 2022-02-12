@@ -31,7 +31,7 @@ void	leave(int code)
 static int	check(t_stack *a, t_stack *b)
 {
 	char	*s;
-	
+
 	s = get_next_line(0);
 	if (s == NULL)
 	{

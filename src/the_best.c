@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoll.c                                         :+:      :+:    :+:   */
+/*   the_best.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 06:38:00 by ccamie            #+#    #+#             */
-/*   Updated: 2022/01/13 06:38:04 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/11 18:33:04 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/11 18:33:07 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../libft/libft.h"
+#include "push_swap.h"
 #include <limits.h>
 
-int		ft_isdigit(int c);
-
-long long	ft_atoll(const char *s)
+int command_sum(t_calc calc)
 {
-	long long	n;
-	int			sign;
+    return (calc.r.a + calc.r.b + calc.rr.a + calc.rr.b);
+}
 
-	n = 0;
-	sign = 1;
-	while (*s == 32 || (*s >= 9 && *s <= 13))
-		s++;
-	if (*s == 43 || *s == 45)
-		if (*s++ == 45)
-			sign = -1;
-	while (ft_isdigit(*s))
+t_calc	the_best(t_stack *b, int count)
+{
+    t_calc  command;
+    int	    i;
+
+	i = 0;
+    command.r.a = INT_MAX;
+	b = b->prev;
+	while (count > 0)
 	{
-		if (n < INT_MIN || n > INT_MAX)
-			return ((long long)INT_MAX + 1);
-		n = n * 10 + *s++ - 48;
+		if (command_sum(b->calc) < command_sum(command))
+            command = b->calc;
+		b = b->prev;
+		count--;
 	}
-	return (n * sign);
+    return (command);
 }

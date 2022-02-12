@@ -16,8 +16,8 @@ HEADER		=	   push_swap.h
 LIBFT		=	../libft/libft.a
 
 SRCS		=	action.c	\
-				get_mmm.c	\
 				main.c		\
+				chunks.c	\
 				parser.c	\
 				print.c		\
 				push_swap.c	\

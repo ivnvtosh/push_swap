@@ -15,12 +15,26 @@
 
 # include <stdio.h>
 
+typedef struct s_ab
+{
+	int	a;
+	int	b;
+	int	r;
+}	t_ab;
+
+typedef struct s_calc
+{
+	t_ab	r;
+	t_ab	rr;
+}	t_calc;
+
 typedef struct s_stack
 {
 	int				number;
 	unsigned int	index;
 	struct s_stack	*prev;
 	struct s_stack	*next;
+	t_calc			calc;
 }	t_stack;
 
 #endif
