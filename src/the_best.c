@@ -23,7 +23,7 @@ int command_sum(t_calc calc)
     return (sum_r + sum_rr);
 }
 
-t_calc	the_best(t_stack *b, int count)
+t_calc	search_best(t_stack *b, int count)
 {
     t_calc  command;
 

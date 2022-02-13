@@ -74,7 +74,6 @@ static void	last(t_stack **a, t_stack **b)
 	action(a, b, "rrb"); 
 	action(a, b, "pa");
 	action(a, b, "pa");
-
 }
 
 void	chunks(t_stack **a, t_stack **b, int count)

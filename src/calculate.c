@@ -73,7 +73,6 @@ int	calculate_rra(t_stack *a, t_stack *b)
     }
     else
     {
-		// printf("a = %d > b = %d\n", a->index, b->index);
         while (a->index < b->index)
         {
             a = a->next;
@@ -99,21 +98,6 @@ t_calc	calculate_one(t_stack *a, t_stack *b, int count, int i)
 	calc.rr.a = calculate_rra(a, b);
 	// printf("done rra\n");
 	calc.rr.b = i;
-
-    calc.r.r = 0;
-	while (calc.r.a && calc.r.b)
-	{
-		calc.r.a--;
-		calc.r.b--;
-    	calc.r.r++;
-	}
-    calc.rr.r = 0;
-	while (calc.rr.a && calc.rr.b)
-	{
-		calc.rr.a--;
-		calc.rr.b--;
-    	calc.rr.r++;
-	}
 	return (calc);
 } 
 
@@ -123,40 +107,21 @@ void	calculate(t_stack *a, t_stack *b, int count)
     int j;
 
 	i = 1;
-    j = count / 2 - 2;
-	print(a, b);
+    j = count;
 	b = b->prev; 
-	while (j > 0)
-	{
+	// while (j > 0)
+	// {
 		b->calc = calculate_one(a, b, count, i++);
-		printf("what?\n");
-		printf("ra - %d\n", b->calc.r.a);
-		printf("rb - %d\n", b->calc.r.b);
-		printf("rr - %d\n\n", b->calc.r.r);
-		printf("rra - %d\n", b->calc.rr.a);
-		printf("rrb - %d\n", b->calc.rr.b);
-		printf("rrr - %d\n\n", b->calc.rr.r);
-		if (b->calc.r.a + b->calc.r.b +  b->calc.r.r < b->calc.rr.a + b->calc.rr.b + b->calc.rr.r)
-		{
-			printf("top\n");
-			b->calc.rr.a = 0;
-			b->calc.rr.b = 0;
-			b->calc.rr.r = 0;
-			printf("ra - %d\n", b->calc.r.a);
-			printf("rb - %d\n", b->calc.r.b);
-			printf("rr - %d\n\n", b->calc.r.r);
-		}
-		else
-		{
-			printf("top\n");
-			b->calc.r.a = 0;
-			b->calc.r.b = 0;
-			b->calc.r.r = 0;
-			printf("rra - %d\n", b->calc.rr.a);
-			printf("rrb - %d\n", b->calc.rr.b);
-			printf("rrr - %d\n\n", b->calc.rr.r);
-		}
+		// printf("what?\n");
+		printf("%d   ",       b->index);
+		printf ("ra - %d, ",  b->calc.r.a);
+		printf ("rb - %d   ", b->calc.r.b);
+		printf("rra - %d, ",  b->calc.rr.a);
+		printf("rrb - %d   ", b->calc.rr.b);
+		printf ("rr - %d, ",  b->calc.r.r);
+		printf("rrr - %d\n",  b->calc.rr.r);
 		b = b->prev;
 		j--;
-	}
+	// }
 }
+
