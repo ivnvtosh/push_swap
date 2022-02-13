@@ -49,8 +49,7 @@ void	search(t_stack **a, t_stack **b, unsigned int count)
 
 void	quicksort(t_stack **a, t_stack **b, int count)
 {
-	// t_calc	calc;
-
+	t_calc	calc;
 
 	chunks(a, b, count);
 	count -= 3;
@@ -59,13 +58,9 @@ void	quicksort(t_stack **a, t_stack **b, int count)
 	count -= count / 4;
 	print(*a, *b);
 	calculate(*a, *b, count);
-
-	// print(*a, *b);
-	// calc = search_best(*b, count / 2 - 2);
-	// apply_commands(a, b, calc);
-	// print(*a, *b);
-
-
+	calc = search_best(*b, count);
+	apply_commands(a, b, calc);
+	print(*a, *b);
 
 }
 

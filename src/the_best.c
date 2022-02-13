@@ -27,21 +27,36 @@ t_calc	search_best(t_stack *b, int count)
 {
     t_calc  command;
 
-	command = b->prev->calc;
-	b = b->prev->prev;
+	b = b->prev;
+	command = b->calc;
+	printf("%2d   ",       b->index);
+	printf ("ra - %2d, ",  b->calc.r.a);
+	printf("rra - %2d   ", b->calc.rr.a);
+	printf ("rb - %2d, ",  b->calc.r.b);
+	printf("rrb - %2d   ", b->calc.rr.b);
+	printf ("rr - %2d, ",  b->calc.r.r);
+	printf("rrr - %2d\n",  b->calc.rr.r);
+	b = b->prev;
 	while (count > 1)
 	{
+		printf("%2d   ",       b->index);
+		printf ("ra - %2d, ",  b->calc.r.a);
+		printf("rra - %2d   ", b->calc.rr.a);
+		printf ("rb - %2d, ",  b->calc.r.b);
+		printf("rrb - %2d   ", b->calc.rr.b);
+		printf ("rr - %2d, ",  b->calc.r.r);
+		printf("rrr - %2d\n",  b->calc.rr.r);
 		if (command_sum(b->calc) < command_sum(command))
             command = b->calc;
 		b = b->prev;
 		count--;
 	}
-	// printf("command\n");
-	// printf("ra - %d\n", command.r.a);
-	// printf("rb - %d\n", command.r.b);
-	// printf("rr - %d\n\n", command.r.r);
-	// printf("rra - %d\n", command.rr.a);
-	// printf("rrb - %d\n", command.rr.b);
-	// printf("rrr - %d\n\n", command.rr.r);
+	printf("command\n");
+	printf("ra - %d\n", command.r.a);
+	printf("rb - %d\n", command.r.b);
+	printf("rr - %d\n\n", command.r.r);
+	printf("rra - %d\n", command.rr.a);
+	printf("rrb - %d\n", command.rr.b);
+	printf("rrr - %d\n\n", command.rr.r);
     return (command);
 }
