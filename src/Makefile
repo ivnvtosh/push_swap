@@ -21,6 +21,7 @@ SRCS		=	action.c	\
 				calculate.c	\
 				main.c		\
 				chunks.c	\
+				get_mmm.c	\
 				parser.c	\
 				print.c		\
 				push_swap.c	\

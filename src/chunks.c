@@ -13,9 +13,16 @@
 #include "../libft/libft.h"
 #include "push_swap.h"
 
+typedef struct s_var
+{
+	unsigned int	min;
+	unsigned int	mid;
+	unsigned int	max;
+}	t_var;
+
 void	action(t_stack **a, t_stack **b, const char *s);
 
-static unsigned int	get_mid(t_stack *stack, int count)
+static unsigned int	get_mid(t_stack *stack, int count, t_var var)
 {
 	unsigned int	mid;
 	unsigned int	tmp;
@@ -28,7 +35,8 @@ static unsigned int	get_mid(t_stack *stack, int count)
 	tmp = count;
 	while (count > 0)
 	{
-		mid += stack->index;
+		if (stack->index != var.min && stack->index != var.max)
+			mid += stack->index;
 		stack = stack->next;
 		count--;
 	}
@@ -36,16 +44,18 @@ static unsigned int	get_mid(t_stack *stack, int count)
 	return (mid);
 }
 
-static int	chunk(t_stack **a, t_stack **b, int count)
+static int	chunk(t_stack **a, t_stack **b, int count, t_var var)
 {
 	unsigned int here;
     unsigned int mid;
 
 	here = count;
-    mid = get_mid(*a, count);
+    mid = get_mid(*a, count, var);
 	while (count > 0)
 	{
-		if (mid < (*a)->index)
+		if ((*a)->index == var.min || (*a)->index == var.max)
+			action(a, b, "ra");
+		else if (mid < (*a)->index)
 		{
 			action(a, b, "pb");
 			here--;
@@ -57,31 +67,31 @@ static int	chunk(t_stack **a, t_stack **b, int count)
 	return (here);
 }
 
-static void	last(t_stack **a, t_stack **b)
-{
-	// if ((*a)->index > (*a)->next->index && (*b)->index < (*b)->next->index)
-	// 	action(a, b, "ss");
-	// else
-	// {
-		if ((*a)->index < (*a)->next->index)
-			action(a, b, "sa");
-		if ((*b)->index > (*b)->next->index)
-			action(a, b, "sb");
-	// }
-	action(a, b, "pb");
-	action(a, b, "pb");
-	action(a, b, "rrb");
-	action(a, b, "rrb"); 
-	action(a, b, "pa");
-	action(a, b, "pa");
-}
+// static void	last(t_stack **a, t_stack **b)
+// {
+// 	// if ((*a)->index > (*a)->next->index && (*b)->index < (*b)->next->index)
+// 	// 	action(a, b, "ss");
+// 	// else
+// 	// {
+// 		if ((*a)->index < (*a)->next->index)
+// 			action(a, b, "sa");
+// 		if ((*b)->index > (*b)->next->index)
+// 			action(a, b, "sb");
+// 	// }
+// 	action(a, b, "pb");
+// 	action(a, b, "pb");
+// 	action(a, b, "rrb");
+// 	action(a, b, "rrb"); 
+// 	action(a, b, "pa");
+// 	action(a, b, "pa");
+// }
 
-void	chunks(t_stack **a, t_stack **b, int count)
+void	chunks(t_stack **a, t_stack **b, int count, t_var var)
 {
 	int	here;
 
 	if (count <= 2)
-		return last(a, b);
-	here = chunk(a, b, count);
-	chunks(a, b, here);
+		return ;
+	here = chunk(a, b, count, var);
+	chunks(a, b, here, var);
 }

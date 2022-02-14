@@ -13,9 +13,17 @@
 #include "../libft/libft.h"
 #include "push_swap.h"
 
-void	chunks(t_stack **a, t_stack **b, int count);
+typedef struct s_var
+{
+	unsigned int	min;
+	unsigned int	mid;
+	unsigned int	max;
+}	t_var;
+
+t_var	get_min_mid_max(t_stack *stack, int count);
+void	chunks(t_stack **a, t_stack **b, int count, t_var var);
 void	calculate(t_stack *a, t_stack *b, int count);
-t_calc	search_best(t_stack *b, int count);
+t_calc	search_best(t_stack *b, int count, t_var var);
 void    apply_commands(t_stack **a, t_stack **b, t_calc command);
 void	action(t_stack **a, t_stack **b, const char *s);
 
@@ -47,20 +55,53 @@ void	search(t_stack **a, t_stack **b, unsigned int count)
 	}
 }
 
+// static void	send_from_a_to_b(t_stack **a, t_stack **b, int count, t_var var)
+// {
+// 	while (count > 0)
+// 	{
+// 		if (var.min == (*a)->index || var.max == (*a)->index)
+// 			action(a, b, "ra");
+// 		else
+// 		{
+// 			if (var.mid < (*a)->index)
+// 				action(a, b, "pb");
+// 			else
+// 			{
+// 				action(a, b, "pb");
+// 				if (var.min == (*a)->index || var.max == (*a)->index)
+// 				{
+// 					action(a, b, "rr");
+// 					count--;
+// 				}
+// 				else
+// 					action(a, b, "rb");
+// 			}
+// 		}
+// 		count--;
+// 	}
+// }
+
 void	quicksort(t_stack **a, t_stack **b, int count)
 {
 	t_calc	calc;
+	t_var	var;
 
-	chunks(a, b, count);
+	var = get_min_mid_max(*a, count);
+	chunks(a, b, count, var);
 	count -= 3;
-	action(a, b, "rrb");
-	search(a, b, count / 4);
-	count -= count / 4;
-	print(*a, *b);
-	calculate(*a, *b, count);
-	calc = search_best(*b, count);
-	apply_commands(a, b, calc);
-	print(*a, *b);
+
+	// send_from_a_to_b(a, b, count, get_min_mid_max(*a, count));
+	while (count > 0)
+	{
+		calculate(*a, *b, count);
+		calc = search_best(*b, count, var);
+		apply_commands(a, b, calc);
+		count--;
+	}
+
+
+
+	// print(*a, *b);
 
 }
 

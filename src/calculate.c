@@ -13,7 +13,9 @@
 #include "../libft/libft.h"
 #include "push_swap.h"
 
-int	calculate_ra(t_stack *a, t_stack *b)
+int	stack_len(t_stack *stack);
+
+int	calculate_rra(t_stack *a, t_stack *b)
 {
 	int	i;
 
@@ -23,10 +25,16 @@ int	calculate_ra(t_stack *a, t_stack *b)
 	{
 		a = a->prev;
 		i++;
-		// if (a->index > a->prev->index && a->index > b->index)
+		// if (a->index > a->next->index && a->next->index > b->index)
+		// {
+		// 	i--;
 		// 	break ;
-		// if (a->index > a->prev->index && a->index < b->index)
+		// }
+		// if (a->index > a->next->index && a->index < b->index)
+		// {
+		// 	// i++;
 		// 	break ;
+		// }
 		if (a->index > b->index && a->prev->index < b->index)
 			break ;
 	}
@@ -34,26 +42,28 @@ int	calculate_ra(t_stack *a, t_stack *b)
 	return (i);
 }
 
-int	calculate_rra(t_stack *a, t_stack *b)
-{
-    int	i;
+// int	calculate_ra(t_stack *a, t_stack *b)
+// {
+//     int	i;
 
-    i = 0;
-	// printf("calc rra\n");
-	while (1)
-	{
-		a = a->next;
-		i++;
-		// if (a->index > a->prev->index && a->index > b->index)
-		// 	break ;
-		// if (a->index > a->prev->index && a->index < b->index)
-		// 	break ;
-		if (a->index > b->index && a->prev->index < b->index)
-			break ;
-	}
-	// printf("done rra\n");
-	return (i);
-}
+//     i = 0;
+// 	printf("calc rra\n");
+// 	while (1)
+// 	{
+// 		a = a->next;
+// 		i++;
+// 		// if (a->index > a->prev->index && a->index > b->index)
+// 		// 	break ;
+// 		// if (a->index < a->prev->index && a->next->index > b->index)
+// 		// 	break ;
+// 		// if (a->index < a->prev->index && a->index < b->index)
+// 		// 	break ;
+// 		if (a->index > b->index && a->prev->index < b->index)
+// 			break ;
+// 	}
+// 	printf("done rra\n");
+// 	return (i);
+// }
 
 int	least(int a, int b)
 {
@@ -99,9 +109,9 @@ t_calc	print_v(t_calc calc, int index)
 
 		// printf("\n");
 
-		if (v1 < v2 && v1 < v3 && v1 < v4)
+		if (v1 <= v2 && v1 <= v3 && v1 <= v4)
 		{
-			printf("%2d least v1 ra  + rrb       = %2d\n", index, v1);
+			// printf("%2d least v1 ra  + rrb       = %2d\n", index, v1);
 			// calc.r.a   = ;
 			// calc.r.b   = ;
 			calc.rr.a  = 0;
@@ -110,9 +120,9 @@ t_calc	print_v(t_calc calc, int index)
 			calc.rr.r  = 0;
 
 		}
-		else if (v2 < v1 && v2 < v3 && v2 < v4)
+		else if (v2 <= v1 && v2 <= v3 && v2 <= v4)
 		{
-			printf("%2d least v2 rra + rb        = %2d\n", index, v2);
+			// printf("%2d least v2 rra + rb        = %2d\n", index, v2);
 			calc.r.a   = 0;
 			// calc.r.b   = ;
 			// calc.rr.a  = ;
@@ -121,9 +131,9 @@ t_calc	print_v(t_calc calc, int index)
 			calc.rr.r  = 0;
 
 		}
-		else if (v3 < v1 && v3 < v2 && v3 < v4)
+		else if (v3 <= v1 && v3 <= v2 && v3 <= v4)
 		{
-			printf("%2d least v3 rr  + ra  + rb  = %2d\n", index, v3);
+			// printf("%2d least v3 rr  + ra  + rb  = %2d\n", index, v3);
 			calc.r.a  -=  calc.r.r;
 			calc.r.b  -=  calc.r.r;
 			calc.rr.a -= 0;
@@ -132,9 +142,9 @@ t_calc	print_v(t_calc calc, int index)
 			calc.rr.r  = 0;
 
 		}
-		else if (v4 < v1 && v4 < v2 && v4 < v3)
+		else if (v4 <= v1 && v4 <= v2 && v4 <= v3)
 		{
-			printf("%2d least v4 rrr + rra + rrb = %2d\n", index, v4);
+			// printf("%2d least v4 rrr + rra + rrb = %2d\n", index, v4);
 			calc.r.a   = 0;
 			calc.r.b   = 0;
 			calc.rr.a -= calc.rr.r;
@@ -142,8 +152,8 @@ t_calc	print_v(t_calc calc, int index)
 			calc.r.r   = 0;
 			// calc.rr.r  = ;
 		}
-		else
-			printf("lol v1 v2 v3 v4\n");
+		// else
+			// printf("lol v1 v2 v3 v4\n");
 
 		// printf("\n");
 
@@ -163,9 +173,10 @@ t_calc	calculate_one(t_stack *a, t_stack *b, int count, int i)
 {
 	t_calc	calc;
 
-	calc.r.a = calculate_rra(a, b);
+	// calc.r.a = calculate_ra(a, b);
 	calc.r.b = count - i;
-	calc.rr.a = calculate_ra(a, b);
+	calc.rr.a = calculate_rra(a, b);
+	calc.r.a = stack_len(a) - calc.rr.a;
 	calc.rr.b = i;
 	calc.r.r = least(calc.r.a, calc.r.b);
 	calc.rr.r = least(calc.rr.a, calc.rr.b);
