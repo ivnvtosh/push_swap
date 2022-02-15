@@ -1,11 +1,6 @@
 
 #include "push_swap.h"
 
-void	stack_push(t_stack **from, t_stack **to);
-void	stack_reverce_rotate(t_stack **stack);
-void	stack_rotate(t_stack **stack);
-void	stack_swap(t_stack *stack);
-
 static void	check_swap(t_stack **a, t_stack **b, char c)
 {
 	if (c == 'a')

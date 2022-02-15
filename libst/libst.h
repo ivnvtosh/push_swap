@@ -15,10 +15,15 @@ void	stack_delone(t_stack *stack);
 t_stack	*stack_duplicate(t_stack *stack);
 t_stack	*stack_get_bottom(t_stack *stack);
 t_stack	*stack_get_max(t_stack *stack);
+t_stack	*stack_get_mid(t_stack *stack);
 t_stack	*stack_get_min(t_stack *stack);
 int		stack_get_height(t_stack *stack);
 t_stack	*stack_get_new(int value);
 void	stack_print_one(t_stack *stack);
 void	stack_print(t_stack *a, t_stack *b);
+void	stack_push(t_stack **from, t_stack **to);
+void	stack_reverce_rotate(t_stack **stack);
+void	stack_rotate(t_stack **stack);
+void	stack_swap(t_stack *stack);
 
 #endif

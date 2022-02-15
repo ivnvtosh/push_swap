@@ -9,6 +9,7 @@ SRCS		=	stack_add_bottom.c	\
 				stack_duplicate.c	\
 				stack_get_bottom.c	\
 				stack_get_max.c		\
+				stack_get_mid.c		\
 				stack_get_min.c		\
 				stack_get_height.c	\
 				stack_get_new.c		\

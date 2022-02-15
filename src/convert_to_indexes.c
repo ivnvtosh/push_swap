@@ -66,4 +66,5 @@ void	convert_to_indexes(t_stack *stack)
 			data.dup = data.top.dup;
 		}
 	}
+	stack_clear(&data.top.dup);
 }

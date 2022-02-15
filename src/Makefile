@@ -8,6 +8,7 @@ LIBST		=	../libst/libst.a
 SRCS		=	action.c				\
 				check.c					\
 				convert_to_indexes.c	\
+				justsort.c				\
 				main.c					\
 				parser.c				\
 				push_swap.c				\
