@@ -17,7 +17,6 @@ typedef struct s_data
 	int		index;
 }	t_data;
 
-	
 static t_data	get_data(t_stack *stack)
 {
 	t_data	data;
@@ -33,7 +32,7 @@ static t_data	get_data(t_stack *stack)
 	return (data);
 }
 
-static	int	get_next_find(t_stack *dup, int prev)
+static int	get_next_find(t_stack *dup, int prev)
 {
 	int	find;
 

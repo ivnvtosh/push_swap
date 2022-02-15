@@ -12,7 +12,10 @@ SRCS		=	stack_add_bottom.c	\
 				stack_get_min.c		\
 				stack_get_height.c	\
 				stack_get_new.c		\
-				stack_print.c
+				stack_print.c		\
+				stack_push.c		\
+				stack_rotate.c		\
+				stack_swap.c
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror

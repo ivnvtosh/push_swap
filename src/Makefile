@@ -5,11 +5,13 @@ HEADER		=	   push_swap.h
 LIBFT		=	../libft/libft.a
 LIBST		=	../libst/libst.a
 
-SRCS		=	check.c					\
+SRCS		=	action.c				\
+				check.c					\
 				convert_to_indexes.c	\
 				main.c					\
 				parser.c				\
 				push_swap.c				\
+				sort.c					\
 				terminate.c
 
 CC			=	cc

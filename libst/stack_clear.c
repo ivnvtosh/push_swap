@@ -10,7 +10,7 @@ void	stack_clear(t_stack **stack)
 	{
 		top = *stack;
 		*stack = (*stack)->prev;
-		free(top);
+		stack_delone(top);
 	}
 	*stack = NULL;
 }

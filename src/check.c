@@ -13,6 +13,8 @@ void	check_for_digit(char **num)
 		i = 0;
 		if (num[j][i] == '-')
 			i++;
+		if (num[j][i] == '\0')
+			terminate(ERROR);
 		while (ft_isdigit(num[j][i]))
 			i++;
 		if (num[j][i] != '\0')

@@ -18,6 +18,7 @@ t_stack	*stack_get_max(t_stack *stack);
 t_stack	*stack_get_min(t_stack *stack);
 int		stack_get_height(t_stack *stack);
 t_stack	*stack_get_new(int value);
-void	stack_print(t_stack *stack);
+void	stack_print_one(t_stack *stack);
+void	stack_print(t_stack *a, t_stack *b);
 
 #endif
