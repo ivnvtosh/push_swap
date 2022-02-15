@@ -13,9 +13,21 @@
 #ifndef LIBST_H
 # define LIBST_H
 
+typedef struct s_score
+{
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}	t_score;
+
+
 typedef struct s_stack
 {
 	int				value;
+	t_score			score;
 	struct s_stack	*prev;
 }	t_stack;
 

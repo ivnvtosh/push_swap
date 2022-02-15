@@ -26,6 +26,11 @@ void	stack_print_one(t_stack *stack)
 	printf("\x1b[0m\n");
 }
 
+static void	print(t_stack *b, t_score score)
+{
+	printf("%3d|\n", b->value);
+}
+
 void	stack_print(t_stack *a, t_stack *b)
 {
 	printf("\x1b[4m         \n");
@@ -33,14 +38,14 @@ void	stack_print(t_stack *a, t_stack *b)
 	{
 		if (a != NULL)
 		{
-			printf("|%3u|", a->value);
+			printf("|%3d|", a->value);
 			a = a->prev;
 		}
 		else
 			printf("|   |");
 		if (b != NULL)
 		{
-			printf("%3u|\n", b->value);
+			print(b, b->score);
 			b = b->prev;
 		}
 		else

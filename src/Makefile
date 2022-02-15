@@ -17,6 +17,7 @@ LIBFT		=	../libft/libft.a
 LIBST		=	../libst/libst.a
 
 SRCS		=	action.c				\
+				calculate.c				\
 				check.c					\
 				convert_to_indexes.c	\
 				justsort.c				\
