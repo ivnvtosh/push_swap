@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 16:11:53 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/15 16:11:55 by ccamie           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
 # include "../libst/libst.h"
+
+# include <stdio.h>
 
 # define GOOD		0
 # define NOTHING	1
@@ -24,7 +37,5 @@
 
 void	action(t_stack **a, t_stack **b, const char *command);
 void	terminate(int code);
-
-# include <stdio.h>
 
 #endif

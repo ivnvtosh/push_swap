@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   convert_to_indexes.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 16:10:47 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/15 16:10:50 by ccamie           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 
 typedef struct s_top
 {
-	t_stack *stack;
+	t_stack	*stack;
 	t_stack	*dup;
 }	t_top;
 
@@ -48,7 +59,7 @@ static int	get_next_find(t_stack *dup, int prev)
 
 void	convert_to_indexes(t_stack *stack)
 {
-	t_data data;
+	t_data	data;
 
 	data = get_data(stack);
 	while (data.index != data.height)
