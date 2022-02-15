@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoll.c                                         :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
-
 int		ft_isdigit(int c);
 
-long long	ft_atoll(const char *s)
+long	ft_atol(const char *s)
 {
-	long long	n;
-	int			sign;
+	long	n;
+	long	sign;
 
 	n = 0;
 	sign = 1;
@@ -28,8 +26,8 @@ long long	ft_atoll(const char *s)
 			sign = -1;
 	while (ft_isdigit(*s))
 	{
-		if (n < INT_MIN || n > INT_MAX)
-			return ((long long)INT_MAX + 1);
+		if (n < -__INT_MAX__ - 1 || n > __INT_MAX__)
+			return (__LONG_MAX__);
 		n = n * 10 + *s++ - 48;
 	}
 	return (n * sign);
