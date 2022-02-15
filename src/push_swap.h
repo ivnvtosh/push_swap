@@ -19,8 +19,8 @@
 # include <stdio.h>
 
 # define GOOD		0
-# define NOTHING	1
-# define ERROR		2
+# define ERROR		1
+# define NOTHING	2
 # define MALLOC		3
 
 # define SA			"sa"

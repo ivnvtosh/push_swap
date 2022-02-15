@@ -5,43 +5,39 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ccamie <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/18 15:45:41 by ccamie            #+#    #+#              #
-#    Updated: 2021/10/18 15:45:43 by ccamie           ###   ########.fr        #
+#    Created: 2022/02/15 16:12:30 by ccamie            #+#    #+#              #
+#    Updated: 2022/02/15 16:12:31 by ccamie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY		:	all clean fclean re bonus rebonus libft libst libgnl
+NAME		=	libgnl.a
+HEADER		=	get_next_line.h
 
-all			:	libft libst
-				make -C src
+SRCS		=	get_next_line_utils.c	\
+				get_next_line.c
 
-# bonus		:	libft libst libgnl
-# 				make -C src_bonus
+CC			=	cc
+CFLAGS		=	-Wall -Wextra -Werror
+AR			=	ar
+ARFLAGS		=	crs
+RM			=	rm -f
 
-libft		:
-				make -C libft bonus
+OBJS		=	$(SRCS:.c=.o)
 
-libst		:
-				make -C libst
+.PHONY		:	all clean fclean re
 
-libgnl		:
-				male -C libgnl
+all			:	$(NAME)
+
+$(NAME)		:	$(OBJS)
+				$(AR) $(ARFLAGS) $(NAME) $?
+
+%.o			:	%.c $(HEADER)
+				$(CC) $(CFLAGS) -c $< -o $@
 
 clean		:
-				make -C src clean
-#				make -C src_bonus clean
-				make -C libft clean
-				make -C libst clean
-				male -C libgnl clean
+				$(RM) $(OBJS)
 
-fclean		:
+fclean		:	clean
 				$(RM) $(NAME)
-				make -C src fclean
-#				make -C src_bonus fclean
-				make -C libft fclean
-				make -C libst fclean
-				male -C libgnl fclean
-				
-re			:	fclean all
 
-rebonus		:	fclean bonus
+re			:	fclean all
