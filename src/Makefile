@@ -17,6 +17,7 @@ LIBFT		=	../libft/libft.a
 LIBST		=	../libst/libst.a
 
 SRCS		=	action.c				\
+				apply_comm.c			\
 				calculate.c				\
 				check.c					\
 				convert_to_indexes.c	\
@@ -24,8 +25,11 @@ SRCS		=	action.c				\
 				main.c					\
 				parser.c				\
 				push_swap.c				\
+				recalculate.c			\
+				search_best.c			\
 				sort.c					\
-				terminate.c
+				terminate.c				\
+				utils.c
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror

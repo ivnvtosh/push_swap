@@ -32,7 +32,7 @@ clean		:
 #				make -C src_bonus clean
 				make -C libft clean
 				make -C libst clean
-				male -C libgnl clean
+#				male -C libgnl clean
 
 fclean		:
 				$(RM) $(NAME)
@@ -40,7 +40,7 @@ fclean		:
 #				make -C src_bonus fclean
 				make -C libft fclean
 				make -C libst fclean
-				male -C libgnl fclean
+#				male -C libgnl fclean
 				
 re			:	fclean all
 

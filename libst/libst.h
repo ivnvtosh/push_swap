@@ -23,7 +23,6 @@ typedef struct s_score
 	int	rrr;
 }	t_score;
 
-
 typedef struct s_stack
 {
 	int				value;
