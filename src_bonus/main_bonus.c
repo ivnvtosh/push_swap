@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 16:11:41 by ccamie            #+#    #+#             */
-/*   Updated: 2022/02/15 16:11:47 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/16 17:19:39 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/16 17:19:40 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stddef.h>
+#include "checker_bonus.h"
 
-t_stack	*parser(char **num);
-void	sort(int count, t_stack **a, t_stack **b);
+void	checker(char **numbers);
 
-void	push_swap(int count, char **num)
+int	main(int argc, char **argv)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = parser(num);
-	b = NULL;
-	sort(count, &a, &b);
-	stack_clear(&a);
+	if (argc == 1)
+		return (NOTHING);
+	checker(++argv);
+	return (GOOD);
 }

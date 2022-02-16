@@ -130,6 +130,11 @@ void	justsort(int count, t_stack **a, t_stack **b)
 		score = search_best(*b);
 		apply_comm(a, b, score);
 	}
-	while ((*a)->value != 0)
-		action(a, b, RRA);
+
+	if ((*a)->value < count / 2)
+		while ((*a)->value != 0)
+			action(a, b, RRA);
+	else
+		while ((*a)->value != 0)
+			action(a, b, RA);
 }

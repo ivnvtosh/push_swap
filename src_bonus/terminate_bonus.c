@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   terminate_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 16:11:41 by ccamie            #+#    #+#             */
-/*   Updated: 2022/02/15 16:11:47 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/16 18:23:40 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/16 18:23:43 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stddef.h>
+#include "checker_bonus.h"
+#include <stdlib.h>
 
-t_stack	*parser(char **num);
-void	sort(int count, t_stack **a, t_stack **b);
-
-void	push_swap(int count, char **num)
+void	terminate(int code)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = parser(num);
-	b = NULL;
-	sort(count, &a, &b);
-	stack_clear(&a);
+	if (code == ERROR)
+		ft_putstr_fd("Error\n", 2);
+	exit(code);
 }
