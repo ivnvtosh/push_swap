@@ -68,7 +68,7 @@ static	void	check(t_list *comm)
 	}
 }
 
-t_list	*parse_comm(t_stack *a, t_stack *b)
+t_list	*parse_comm(void)
 {
 	t_list	*comm;
 

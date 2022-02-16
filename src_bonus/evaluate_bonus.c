@@ -14,12 +14,12 @@
 
 void	evaluate(t_stack *a, t_stack *b)
 {
-	t_stack	*start;
-
 	if (b != NULL)
 		terminate(ERROR);
 	while (a->prev != NULL && a->value < a->prev->value)
 		a = a->prev;
 	if (a->prev != NULL)
-		terminate(ERROR);
+		ft_putstr_fd("KO\n", 1);
+	else
+		ft_putstr_fd("OK\n", 1);
 }

@@ -17,14 +17,15 @@ LIBFT		=	../libft/libft.a
 LIBST		=	../libst/libst.a
 LIBGNL		=	../libgnl/libgnl.a
 
-SRCS		=	action_bonus.c		\
-				apply_comm_bonus.c	\
-				check_bonus.c		\
-				checker_bonus.c		\
-				evaluate_bonus.c	\
-				main_bonus.c		\
-				parse_comm_bonus.c	\
-				parse_num_bonus.c	\
+SRCS		=	action_bonus.c				\
+				apply_comm_bonus.c			\
+				check_bonus.c				\
+				checker_bonus.c				\
+				convert_to_indexes_bonus.c	\
+				evaluate_bonus.c			\
+				main_bonus.c				\
+				parse_comm_bonus.c			\
+				parse_num_bonus.c			\
 				terminate_bonus.c
 
 CC			=	cc

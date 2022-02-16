@@ -61,7 +61,6 @@ static void	check_reverse_rotate(t_stack **a, t_stack **b, char c)
 
 void	action(t_stack **a, t_stack **b, const char *comm)
 {
-	ft_putendl_fd(comm, 1);
 	if (*comm == 's')
 		check_swap(a, b, *(comm + 1));
 	else if (*comm == 'p')

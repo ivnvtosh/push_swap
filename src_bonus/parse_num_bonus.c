@@ -11,19 +11,20 @@
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
+#include <stdlib.h>
 
 t_stack	*get_stack(char **num)
 {
 	t_stack	*top;
-	t_stack	*new_top;
+	t_stack	*bottom;
 
 	top = NULL;
 	while (*num)
 	{
-		new_top = stack_get_new(ft_atoi(*num++));
-		if (new_top == NULL)
+		bottom = stack_get_new(ft_atoi(*num++));
+		if (bottom == NULL)
 			exit(MALLOC);
-		stack_add_top(&top, new_top);
+		stack_add_bottom(&top, bottom);
 	}
 	return (top);
 }

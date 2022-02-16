@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 t_stack	*parse_num(char **num);
-t_list	*parse_comm(t_stack *a, t_stack *b);
+t_list	*parse_comm(void);
 void	apply_comm(t_stack **a, t_stack **b, t_list *comm);
 void	evaluate(t_stack *a, t_stack *b);
 
@@ -26,7 +26,7 @@ void	checker(char **num)
 
 	a = parse_num(num);
 	b = NULL;
-	comm = parse_comm(a, b);
+	comm = parse_comm();
 	apply_comm(&a, &b, comm);
 	evaluate(a, b);
 	stack_clear(&a);
