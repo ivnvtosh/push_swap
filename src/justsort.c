@@ -90,6 +90,7 @@ static int	chunk(t_stack **a, t_stack **b, int count, t_var var)
 			action(a, b, "ra");
 		else if (mid < (*a)->value)
 		{
+			(*a)->mid = mid;
 			action(a, b, "pb");
 			here--;
 		}
@@ -125,7 +126,10 @@ void	justsort(int count, t_stack **a, t_stack **b)
 	{
 		calculate(*a, *b);
 		recalculate(*b);
+		// stack_print(*a, *b);
 		score = search_best(*b);
 		apply_comm(a, b, score);
 	}
+	while ((*a)->value != 0)
+		action(a, b, RRA);
 }
