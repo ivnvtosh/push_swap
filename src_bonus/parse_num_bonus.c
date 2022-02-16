@@ -43,7 +43,7 @@ t_stack	*parse_num(char **num)
 	check_for_range_int(num);
 	stack = get_stack(num);
 	check_for_duplicates(stack);
-	check_for_sorted(stack);
+	// check_for_sorted(stack);
 	convert_to_indexes(stack);
 	return (stack);
 }
