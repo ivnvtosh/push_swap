@@ -22,51 +22,12 @@ static int	score_sum(t_score score)
 	return (r + rr);
 }
 
-static int	get_mid(t_stack *b)
-{
-	int	mid;
-
-	mid = -1;
-	while (b != NULL)
-	{
-		if (mid < b->mid)
-			mid = b->mid;
-		b = b->prev;
-	}
-	return (mid);
-}
-
-// t_score	search_best(t_stack *b)
-// {
-// 	t_score	score;
-// 	int		mid;
-
-// 	// score = b->score;
-// 	// b = b->prev;
-// 	score.ra = 100;
-// 	score.rb = 100;
-// 	score.rr = 100;
-// 	score.rra = 100;
-// 	score.rrb = 100;
-// 	score.rrr = 100;
-// 	mid = get_mid(b);
-// 	while (b != NULL)
-// 	{
-// 		if (score_sum(b->score) < score_sum(score) && b->mid == mid)
-// 			score = b->score;
-// 		b = b->prev;
-// 	}
-// 	return (score);
-// }
-
 t_score	search_best(t_stack *b)
 {
 	t_score	score;
-	int		mid;
 
 	score = b->score;
 	b = b->prev;
-	mid = get_mid(b);
 	while (b != NULL)
 	{
 		if (score_sum(b->score) < score_sum(score))

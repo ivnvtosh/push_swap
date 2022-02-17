@@ -12,22 +12,25 @@
 
 #include "checker_bonus.h"
 #include <stdlib.h>
+#include <fcntl.h>
 
 static t_list	*get_comm(void)
 {
 	t_list	*comm;
 	t_list	*start;
+	int		fd;
 	char	*s;
 
 	start = NULL;
-	s = get_next_line(0);
+	fd = 0;
+	s = get_next_line(fd);
 	while (s)
 	{
 		comm = ft_lstnew(s);
 		if (comm == NULL)
 			exit(MALLOC);
 		ft_lstadd_back(&start, comm);
-		s = get_next_line(0);
+		s = get_next_line(fd);
 	}
 	return (start);
 }

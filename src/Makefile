@@ -20,6 +20,7 @@ SRCS		=	action.c				\
 				apply_comm.c			\
 				calculate.c				\
 				check.c					\
+				chunk.c					\
 				convert_to_indexes.c	\
 				justsort.c				\
 				main.c					\

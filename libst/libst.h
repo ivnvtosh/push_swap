@@ -26,7 +26,6 @@ typedef struct s_score
 typedef struct s_stack
 {
 	int				value;
-	int				mid;
 	t_score			score;
 	struct s_stack	*prev;
 }	t_stack;

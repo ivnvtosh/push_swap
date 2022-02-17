@@ -15,11 +15,13 @@
 int	least(int a, int b);
 int	biggest(int a, int b);
 
-int	calculate_ra(t_stack *a, t_stack *b, t_stack *ta)
+int	calculate_ra(t_stack *a, t_stack *b)
 {
-	int	i;
+	t_stack	*top;
+	int		i;
 
 	i = 0;
+	top = a;
 	while (a->prev != NULL)
 	{
 		if (a->value < b->value && a->prev->value > b->value)
@@ -27,7 +29,7 @@ int	calculate_ra(t_stack *a, t_stack *b, t_stack *ta)
 		a = a->prev;
 		i++;
 	}
-	a = ta;
+	a = top;
 	while (a->prev != NULL)
 	{
 		if (a->value < b->value && a->prev->value > b->value)
@@ -38,11 +40,11 @@ int	calculate_ra(t_stack *a, t_stack *b, t_stack *ta)
 	return (i);
 }
 
-t_score	calculate_one(int count, t_stack *a, t_stack *b, int i, t_stack *ta)
+t_score	calculate_one(int count, t_stack *a, t_stack *b, int i)
 {
 	t_score	score;
 
-	score.ra = calculate_ra(a, b, ta);
+	score.ra = calculate_ra(a, b);
 	score.rb = i;
 	score.rra = stack_get_height(a) - score.ra;
 	if (score.ra > stack_get_height(a))
@@ -61,16 +63,14 @@ t_score	calculate_one(int count, t_stack *a, t_stack *b, int i, t_stack *ta)
 
 void	calculate(t_stack *a, t_stack *b)
 {
-	t_stack	*ta;
 	int		count;
 	int		i;
 
-	ta = a;
 	count = stack_get_height(b);
 	i = 0;
 	while (b != NULL)
 	{
-		b->score = calculate_one(count, a, b, i++, ta);
+		b->score = calculate_one(count, a, b, i++);
 		b = b->prev;
 	}
 }

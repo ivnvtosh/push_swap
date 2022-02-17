@@ -28,7 +28,7 @@ void	stack_print_one(t_stack *stack)
 
 static void	print(t_stack *b, t_score score)
 {
-	printf("%3d|\x1b[0m   | mid %-3d | ", b->value, b->mid);
+	printf("%3d|\x1b[0m   | ", b->value);
 	printf("ra %-3d rb %-3d |   ", score.ra, score.rb);
 	printf("rra %-3d rrb %-3d |   ", score.rra, score.rrb);
 	printf("rr %-3d rrr %-3d\n", score.rr, score.rrr);
