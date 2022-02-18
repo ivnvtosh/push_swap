@@ -25,47 +25,76 @@ void	recalculate(t_stack *b);
 t_score	search_best(t_stack *b);
 void	apply_comm(t_stack **a, t_stack **b, t_score score);
 
-// void	lol(t_stack **a, t_stack **b, t_stack *top, t_var var)
-// {
-// 	if (top->value == var.mid && top->value == var.min)
-// 	{
-// 		action(a, b, "sa");
-// 		return ;
-// 	}
-// 	if (top->value == var.max)
-// 		top = top->prev;
-// 	while (top->prev != NULL && top->value < top->prev->value)
-// 		top = top->prev;
-// 	if (top->prev != NULL)
-// 		action(a, b, "sa");
-// }
+void	lol(t_stack **a, t_stack **b, t_stack *top, t_var var)
+{
+		stack_print(*a, *b);
+
+	if (top->value == var.mid && top->prev->value == var.max)
+		return ;
+	if (top->value == var.mid && top->prev->value == var.min)
+	{
+		if ((top->value == var.min && (*b)->value < (*b)->prev->value) || (top->value == var.mid && (*b)->value < (*b)->prev->value) || \
+			top->value == var.max || (*b)->value < (*b)->prev->value)
+			action(a, b, "ss");
+		else
+			action(a, b, "sa");
+		stack_print(*a, *b);
+
+		return ;
+	}
+	if (top->value == var.max)
+		top = top->prev;
+	while (top->prev != NULL && top->value < top->prev->value)
+		top = top->prev;
+	if (top->prev != NULL)
+	{
+		if ((top->value == var.min && (*b)->value < (*b)->prev->value) || (top->value == var.mid && (*b)->value < (*b)->prev->value) || \
+			top->value == var.max || (*b)->value < (*b)->prev->value)
+			action(a, b, "ss");
+		else
+			action(a, b, "sa");
+	}
+		stack_print(*a, *b);
+
+}
 
 void	push_from_a_to_b(int count, t_stack **a, t_stack **b, t_var var)
 {
 	while (count > 0)
 	{
-		// if (var.min == (*a)->value || var.max == (*a)->value || var.mid == (*a)->value)
-		if (var.min == (*a)->value || var.max == (*a)->value)
-			action(a, b, "ra");
+		// stack_print(*a, *b);
+
+		if (var.min == (*a)->value || var.max == (*a)->value || var.mid == (*a)->value)
+		// if (var.min == (*a)->value || var.max == (*a)->value)
+		{
+			if (count == 1)
+				break;
+			if (var.min == (*a)->prev->value || var.max == (*a)->prev->value || var.mid == (*a)->prev->value)
+			{
+				action(a, b, "rra");
+			}
+			else
+				action(a, b, "ra");
+		}
 		else
 		{
-			if (var.mid < (*a)->value)
+			// if (var.mid < (*a)->value)
 				action(a, b, "pb");
-			else
-			{
-				action(a, b, "pb");
-				if (var.min == (*a)->value || var.max == (*a)->value)
-				{
-					action(a, b, "rr");
-					count--;
-				}
-				else
-					action(a, b, "rb");
-			}
+			// else
+			// {
+			// 	action(a, b, "pb");
+			// 	if (var.min == (*a)->value || var.max == (*a)->value)
+			// 	{
+			// 		action(a, b, "rr");
+			// 		count--;
+			// 	}
+			// 	else
+			// 		action(a, b, "rb");
+			// }
 		}
 		count--;
 	}
-	// lol(a, b, *a, var);
+	lol(a, b, *a, var);
 }
 
 void	justsort(int count, t_stack **a, t_stack **b)
@@ -82,6 +111,7 @@ void	justsort(int count, t_stack **a, t_stack **b)
 		chunks(count, a, b, var);
 	while (*b != NULL)
 	{
+		// stack_print(*a, *b);
 		calculate(*a, *b);
 		recalculate(*b);
 		score = search_best(*b);
@@ -93,4 +123,6 @@ void	justsort(int count, t_stack **a, t_stack **b)
 	else
 		while ((*a)->value != 0)
 			action(a, b, RA);
+		// stack_print(*a, *b);
+
 }
