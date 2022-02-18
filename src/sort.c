@@ -43,9 +43,9 @@ void	sort(int count, t_stack **a, t_stack **b)
 		sort_three(count, a, b);
 	else if (count == 4)
 		sort_four(count, a, b);
-	else if (count == 5)
-		sort_five(count, a, b);
-	else
+	// else if (count == 5)
+	// 	sort_five(count, a, b);
+	// else
 		justsort(count, a, b);
 	stack_clear(a);
 	stack_clear(b);

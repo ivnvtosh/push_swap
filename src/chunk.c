@@ -37,7 +37,7 @@ static int	get_mid(t_stack *stack, int count, t_var var)
 	return (mid);
 }
 
-static int	chunk(t_stack **a, t_stack **b, int count, t_var var)
+static int	chunk(int count, t_stack **a, t_stack **b, t_var var)
 {
 	int	here;
 
@@ -59,12 +59,12 @@ static int	chunk(t_stack **a, t_stack **b, int count, t_var var)
 	return (here);
 }
 
-void	chunks(t_stack **a, t_stack **b, int count, t_var var)
+void	chunks(int count, t_stack **a, t_stack **b, t_var var)
 {
 	int	here;
 
 	if (count <= 2)
 		return ;
-	here = chunk(a, b, count, var);
-	chunks(a, b, here, var);
+	here = chunk(count, a, b, var);
+	chunks(here, a, b, var);
 }
