@@ -36,3 +36,18 @@ t_score	search_best(t_stack *b)
 	}
 	return (score);
 }
+
+// t_score	search_best(t_stack *b)
+// {
+// 	t_score	score;
+
+// 	score = b->score;
+// 	b = b->prev;
+// 	while (b != NULL)
+// 	{
+// 		if (score_sum(b->score) <= score_sum(score) && b->score.rb + b->score.rrb)
+// 			score = b->score;
+// 		b = b->prev;
+// 	}
+// 	return (score);
+// }
