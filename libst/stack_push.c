@@ -17,6 +17,8 @@ void	stack_push(t_stack **from, t_stack **to)
 {
 	t_stack	*top;
 
+	if (*from == NULL)
+		return ;
 	top = *from;
 	if ((*from)->prev == NULL)
 		*from = NULL;

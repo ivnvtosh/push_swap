@@ -12,6 +12,8 @@
 
 #include "push_swap.h"
 
+t_score	search_best(t_stack *b);
+
 static void	apply(t_stack **a, t_stack **b, int count, char *s)
 {
 	while (count > 0)
@@ -21,8 +23,11 @@ static void	apply(t_stack **a, t_stack **b, int count, char *s)
 	}
 }
 
-void	apply_comm(t_stack **a, t_stack **b, t_score score)
+void	apply_comm(t_stack **a, t_stack **b)
 {
+	t_score	score;
+
+	score = search_best(*b);
 	if (score.rr > 0)
 		apply(a, b, score.rr, RR);
 	if (score.rrr > 0)

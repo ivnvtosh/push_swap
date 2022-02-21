@@ -29,6 +29,7 @@ SRCS		=	action.c				\
 				recalculate.c			\
 				search_best.c			\
 				sort.c					\
+				sorts.c					\
 				terminate.c				\
 				utils.c
 

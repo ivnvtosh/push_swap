@@ -11,11 +11,14 @@
 /* ************************************************************************** */
 
 #include "libst.h"
+#include <stddef.h>
 
 void	stack_swap(t_stack *stack)
 {
 	int	c;
 
+	if (stack == NULL || stack->prev == NULL)
+		return ;
 	c = stack->prev->value;
 	stack->prev->value = stack->value;
 	stack->value = c;

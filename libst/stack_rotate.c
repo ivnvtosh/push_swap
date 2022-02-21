@@ -17,6 +17,8 @@ void	stack_rotate(t_stack **stack)
 {
 	t_stack	*top;
 
+	if (*stack == NULL)
+		return ;
 	stack_get_bottom(*stack)->prev = *stack;
 	top = (*stack)->prev;
 	(*stack)->prev = NULL;
@@ -27,6 +29,8 @@ void	stack_reverce_rotate(t_stack **stack)
 {
 	t_stack	*top;
 
+	if (*stack == NULL)
+		return ;
 	top = stack_get_bottom(*stack);
 	top->prev = *stack;
 	*stack = top;
