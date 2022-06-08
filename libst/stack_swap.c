@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   stack_swap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 08:19:12 by ccamie            #+#    #+#             */
-/*   Updated: 2022/01/14 08:20:23 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/15 16:14:41 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/15 16:14:44 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "push_swap.h"
+#include "libst.h"
+#include <stddef.h>
 
-int	stacklen(t_stack *stack);
-
-void	swap(t_stack *stack)
+void	stack_swap(t_stack *stack)
 {
-	if (stack == NULL || stack->next == NULL)
+	int	c;
+
+	if (stack == NULL || stack->prev == NULL)
 		return ;
-	ft_swap(&stack->cell, &stack->next->cell);
+	c = stack->prev->value;
+	stack->prev->value = stack->value;
+	stack->value = c;
 }

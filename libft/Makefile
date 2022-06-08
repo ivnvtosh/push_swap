@@ -14,7 +14,7 @@ NAME		=	libft.a
 HEADER		=	libft.h
 
 SRCS		=	ft_atoi.c		\
-				ft_atoll.c		\
+				ft_atol.c		\
 				ft_bzero.c		\
 				ft_calloc.c		\
 				ft_isalnum.c	\
@@ -34,6 +34,7 @@ SRCS		=	ft_atoi.c		\
 				ft_putstr_fd.c	\
 				ft_split.c		\
 				ft_strchr.c		\
+				ft_strcmp.c		\
 				ft_strdup.c		\
 				ft_striteri.c	\
 				ft_strjoin.c	\

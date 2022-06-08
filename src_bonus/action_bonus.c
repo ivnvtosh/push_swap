@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   action.c                                           :+:      :+:    :+:   */
+/*   action_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 16:10:24 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/08 04:07:56 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/16 18:45:08 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/16 18:45:09 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 static void	check_swap(t_stack **a, t_stack **b, char c)
 {
@@ -59,15 +59,14 @@ static void	check_reverse_rotate(t_stack **a, t_stack **b, char c)
 	}
 }
 
-void	action(t_stack **a, t_stack **b, const char *command)
+void	action(t_stack **a, t_stack **b, const char *comm)
 {
-	ft_putendl_fd(command, 1);
-	if (*command == 's')
-		check_swap(a, b, *(command + 1));
-	else if (*command == 'p')
-		check_push(a, b, *(command + 1));
-	else if (*command == 'r' && *(command + 2) == '\0')
-		check_rotate(a, b, *(command + 1));
-	else if (*command == 'r')
-		check_reverse_rotate(a, b, *(command + 2));
+	if (*comm == 's')
+		check_swap(a, b, *(comm + 1));
+	else if (*comm == 'p')
+		check_push(a, b, *(comm + 1));
+	else if (*comm == 'r' && *(comm + 2) == '\n')
+		check_rotate(a, b, *(comm + 1));
+	else if (*comm == 'r')
+		check_reverse_rotate(a, b, *(comm + 2));
 }

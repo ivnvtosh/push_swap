@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   stack_get_mid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 22:41:31 by ccamie            #+#    #+#             */
-/*   Updated: 2021/10/19 22:41:33 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/15 16:13:57 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/15 16:14:01 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libst.h"
+#include <stddef.h>
 
-typedef struct s_list
+t_stack	*stack_get_mid(t_stack *stack)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	t_stack	*top;
+	int		mid;
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*tab;
-
-	while (*lst)
+	top = stack;
+	mid = 0;
+	while (stack != NULL)
 	{
-		tab = *lst;
-		*lst = (*lst)->next;
-		del(tab->content);
-		free(tab);
+		mid += stack->value;
+		stack = stack->prev;
 	}
-	*lst = NULL;
+	mid /= stack_get_height(top);
+	stack = top;
+	while (stack->value != mid)
+		stack = stack->prev;
+	return (stack);
 }

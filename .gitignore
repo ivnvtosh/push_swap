@@ -7,4 +7,5 @@
 *.out
 *.o
 *.a
+checker
 push_swap

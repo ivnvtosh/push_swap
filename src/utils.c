@@ -5,44 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 08:19:43 by ccamie            #+#    #+#             */
-/*   Updated: 2022/01/14 08:19:47 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/16 01:48:45 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/16 01:48:48 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "push_swap.h"
-#include <stdlib.h>
-
-void	clear(t_stack *stack)
+int	least(int a, int b)
 {
-	if (stack == NULL)
-		return ;
-	if (stack->prev)
-		stack->prev->next = NULL;
-	while (stack->next)
-	{
-		stack = stack->next;
-		free(stack->prev);
-	}
-	free(stack);
+	if (a > b)
+		return (b);
+	else
+		return (a);
 }
 
-int	stacklen(t_stack *stack)
+int	biggest(int a, int b)
 {
-	t_stack	*elem_first;
-	int		i;
-
-	if (stack == NULL)
-		return (0);
-	if (stack == stack->next)
-		return (1);
-	elem_first = stack;
-	i = 0;
-	while (stack->next != elem_first)
-	{
-		stack = stack->next;
-		i++;
-	}
-	return (++i);
+	if (a > b)
+		return (a);
+	else
+		return (b);
 }

@@ -3,65 +3,45 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ccamie <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/18 15:45:41 by ccamie            #+#    #+#              #
-#    Updated: 2021/10/18 15:45:43 by ccamie           ###   ########.fr        #
+#    Updated: 2022/06/08 04:07:35 by ccamie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=		push_swap
-HEADER		=	src/push_swap.h
-HEADER_B	=
+.PHONY		:	all clean fclean re bonus rebonus libft libst libgnl
 
-LIBFT		=	libft/libft.a
+all			:	libft libst
+				make -C src
 
-SRCS		=	src/action.c	\
-				src/handsort.c	\
-				src/main.c		\
-				src/parser.c	\
-				src/print.c		\
-				src/push_swap.c	\
-				src/push.c		\
-				src/quicksort.c	\
-				src/rotate.c	\
-				src/swap.c		\
-				src/terminate.c	\
-				src/utils.c
-				
+bonus		:	libft libst libgnl
+				make -C src_bonus
 
-SRCS_B		=
+libft		:
+				make -C libft bonus
 
-CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror
-RM			=	rm -f
+libst		:
+				make -C libst
 
-OBJS		=	$(SRCS:.c=.o)
-OBJS_B		=	$(SRCS_B:.c=.o)
-
-.PHONY		:	all clean fclean re bonus rebonus
-
-all			:	$(NAME)
-
-$(NAME)		:	$(LIBFT) $(OBJS)
-				$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $(NAME)
-
-$(LIBFT)	:
-				make -C libft
-				make -C libft clean
-
-%.o			:	%.c $(HEADER)
-				$(CC) $(CFLAGS) -c $< -o $@
-
-bonus		:	
-				@make OBJS="$(OBJS_B)" HEADER="$(HEADER_B)" all
+libgnl		:
+				make -C libgnl
 
 clean		:
-				$(RM) $(OBJS) $(OBJS_B)
+				make -C src clean
+				make -C src_bonus clean
+				make -C libft clean
+				make -C libst clean
+				make -C libgnl clean
 
-fclean		:	clean
+fclean		:
 				$(RM) $(NAME)
-
+				make -C src fclean
+				make -C src_bonus fclean
+				make -C libft fclean
+				make -C libst fclean
+				make -C libgnl fclean
+				
 re			:	fclean all
 
 rebonus		:	fclean bonus

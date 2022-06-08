@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   stack_get_height.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 22:41:31 by ccamie            #+#    #+#             */
-/*   Updated: 2021/10/19 22:41:33 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/15 16:13:35 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/15 16:13:38 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libst.h"
+#include <stddef.h>
 
-typedef struct s_list
+int	stack_get_height(t_stack *stack)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	int	i;
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*tab;
-
-	while (*lst)
+	i = 0;
+	while (stack != NULL)
 	{
-		tab = *lst;
-		*lst = (*lst)->next;
-		del(tab->content);
-		free(tab);
+		stack = stack->prev;
+		i += 1;
 	}
-	*lst = NULL;
+	return (i);
 }

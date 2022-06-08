@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   stack_add_bottom.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 22:41:31 by ccamie            #+#    #+#             */
-/*   Updated: 2021/10/19 22:41:33 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/15 16:12:37 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/15 16:12:39 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libst.h"
+#include <stddef.h>
 
-typedef struct s_list
+void	stack_add_bottom(t_stack **stack, t_stack *new)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*tab;
-
-	while (*lst)
-	{
-		tab = *lst;
-		*lst = (*lst)->next;
-		del(tab->content);
-		free(tab);
-	}
-	*lst = NULL;
+	if (*stack == NULL)
+		*stack = new;
+	else
+		stack_get_bottom(*stack)->prev = new;
 }

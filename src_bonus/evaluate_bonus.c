@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   evaluate_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 22:41:31 by ccamie            #+#    #+#             */
-/*   Updated: 2021/10/19 22:41:33 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/16 19:06:45 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/16 19:06:46 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "checker_bonus.h"
 
-typedef struct s_list
+void	evaluate(t_stack *a, t_stack *b)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*tab;
-
-	while (*lst)
-	{
-		tab = *lst;
-		*lst = (*lst)->next;
-		del(tab->content);
-		free(tab);
-	}
-	*lst = NULL;
+	if (b != NULL)
+		terminate(ERROR);
+	while (a->prev != NULL && a->value < a->prev->value)
+		a = a->prev;
+	if (a->prev != NULL)
+		ft_putstr_fd("KO\n", 1);
+	else
+		ft_putstr_fd("OK\n", 1);
 }

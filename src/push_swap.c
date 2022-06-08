@@ -3,31 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/25 18:14:25 by ccamie            #+#    #+#             */
-/*   Updated: 2021/12/25 18:14:28 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/15 16:11:41 by ccamie            #+#    #+#             */
+/*   Updated: 2022/06/08 04:09:03 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "push_swap.h"
+#include <stddef.h>
 
-t_stack	*parser(int *argc, char **argv);
-void	print(t_stack *stack_a, t_stack *stack_b);
-void	handsort(t_stack **stack_a, t_stack **stack_b, int argc);
-void	quicksort(t_stack **stack_a, t_stack **stack_b);
-void	terminate(t_stack *stack_a, t_stack *stack_b, int code);
+t_stack	*parser(char **num);
+void	sort(int count, t_stack **a, t_stack **b);
 
-void	push_swap(int argc, char **argv)
+void	push_swap(int count, char **num)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack	*a;
+	t_stack	*b;
 
-	stack_a = parser(&argc, argv);
-	stack_b = NULL;
-	// if (argc < 6)
-	// 	handsort(&stack_a, &stack_b, argc);
-	quicksort(&stack_a, &stack_b);
-	terminate(stack_a, stack_b, 0);
+	a = parser(num);
+	b = NULL;
+	sort(count, &a, &b);
+	stack_clear(&a);
 }

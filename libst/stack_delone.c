@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   stack_delone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 22:41:31 by ccamie            #+#    #+#             */
-/*   Updated: 2021/10/19 22:41:33 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/15 16:12:58 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/15 16:13:01 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libst.h"
 #include <stdlib.h>
 
-typedef struct s_list
+void	stack_delone(t_stack *stack)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*tab;
-
-	while (*lst)
-	{
-		tab = *lst;
-		*lst = (*lst)->next;
-		del(tab->content);
-		free(tab);
-	}
-	*lst = NULL;
+	free(stack);
 }

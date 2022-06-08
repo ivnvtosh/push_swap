@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoll.c                                         :+:      :+:    :+:   */
+/*   stack_push.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 06:38:00 by ccamie            #+#    #+#             */
-/*   Updated: 2022/01/13 06:38:04 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/15 16:14:29 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/15 16:14:31 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c);
+#include "libst.h"
+#include <stddef.h>
 
-long long	ft_atoll(const char *s)
+void	stack_push(t_stack **from, t_stack **to)
 {
-	long long	n;
-	int			sign;
+	t_stack	*top;
 
-	n = 0;
-	sign = 1;
-	while (*s == 32 || (*s >= 9 && *s <= 13))
-		s++;
-	if (*s == 43 || *s == 45)
-		if (*s++ == 45)
-			sign = -1;
-	while (ft_isdigit(*s))
-		n = n * 10 + *s++ - 48;
-	return (n * sign);
+	if (*from == NULL)
+		return ;
+	top = *from;
+	if ((*from)->prev == NULL)
+		*from = NULL;
+	else
+		*from = (*from)->prev;
+	stack_add_top(to, top);
 }

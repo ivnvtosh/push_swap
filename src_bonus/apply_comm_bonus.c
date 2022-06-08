@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   apply_comm_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 09:17:02 by ccamie            #+#    #+#             */
-/*   Updated: 2022/01/14 09:17:05 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/16 19:04:18 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/16 19:04:20 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "push_swap.h"
+#include "checker_bonus.h"
 
-void	rotate(t_stack **stack)
+void	apply_comm(t_stack **a, t_stack **b, t_list *comm)
 {
-	if (*stack == NULL || (*stack)->next == NULL)
-		return ;
-	*stack = (*stack)->next;
-}
-
-void	reverse_rotate(t_stack **stack)
-{
-	if (*stack == NULL || (*stack)->next == NULL)
-		return ;
-	*stack = (*stack)->prev;
+	while (comm)
+	{
+		action(a, b, comm->content);
+		comm = comm->next;
+	}
 }

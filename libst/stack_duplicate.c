@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   stack_duplicate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 22:41:31 by ccamie            #+#    #+#             */
-/*   Updated: 2021/10/19 22:41:33 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/15 16:13:16 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/15 16:13:18 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libst.h"
 #include <stdlib.h>
 
-typedef struct s_list
+t_stack	*stack_duplicate(t_stack *stack)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	t_stack	*dup;
+	t_stack	*bottom;
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*tab;
-
-	while (*lst)
+	dup = NULL;
+	while (stack != NULL)
 	{
-		tab = *lst;
-		*lst = (*lst)->next;
-		del(tab->content);
-		free(tab);
+		bottom = stack_get_new(stack->value);
+		if (bottom == NULL)
+		{
+			stack_clear(&dup);
+			return (NULL);
+		}
+		stack_add_bottom(&dup, bottom);
+		stack = stack->prev;
 	}
-	*lst = NULL;
+	return (dup);
 }

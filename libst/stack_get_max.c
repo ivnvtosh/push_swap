@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   stack_get_max.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 22:41:31 by ccamie            #+#    #+#             */
-/*   Updated: 2021/10/19 22:41:33 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/15 16:13:47 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/15 16:13:49 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libst.h"
+#include <stddef.h>
 
-typedef struct s_list
+t_stack	*stack_get_max(t_stack *stack)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	t_stack	*max;
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*tab;
-
-	while (*lst)
+	max = stack;
+	while (stack != NULL)
 	{
-		tab = *lst;
-		*lst = (*lst)->next;
-		del(tab->content);
-		free(tab);
+		if (stack->value > max->value)
+			max = stack;
+		stack = stack->prev;
 	}
-	*lst = NULL;
+	return (max);
 }

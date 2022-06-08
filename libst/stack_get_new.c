@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   stack_get_new.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 22:41:31 by ccamie            #+#    #+#             */
-/*   Updated: 2021/10/19 22:41:33 by ccamie           ###   ########.fr       */
+/*   Created: 2022/02/15 16:14:14 by ccamie            #+#    #+#             */
+/*   Updated: 2022/02/15 16:14:16 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libst.h"
 #include <stdlib.h>
 
-typedef struct s_list
+t_stack	*stack_get_new(int value)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	t_stack	*stack;
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*tab;
-
-	while (*lst)
-	{
-		tab = *lst;
-		*lst = (*lst)->next;
-		del(tab->content);
-		free(tab);
-	}
-	*lst = NULL;
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (stack == NULL)
+		return (NULL);
+	stack->value = value;
+	stack->prev = NULL;
+	return (stack);
 }
