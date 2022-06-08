@@ -14,10 +14,9 @@ Algorithm
 
 <img width="1333" alt="Screen Shot 2022-06-08 at 4 12 40 AM" src="https://user-images.githubusercontent.com/87498837/172510078-b31bdb4e-9361-49ba-84c5-3e3e2338df3b.png">
 
-
 <img width="1112" alt="Screen Shot 2022-06-08 at 4 26 05 AM" src="https://user-images.githubusercontent.com/87498837/172511425-9088b549-733f-4848-94cc-5d790f2ad929.png">
 
-https://user-images.githubusercontent.com/87498837/172511723-cb9cf38c-840f-426b-abfd-e3347253c4bd.mov
+https://user-images.githubusercontent.com/87498837/172513105-1e1150b3-7e89-4fec-99ce-28aa5cb8393b.mov
 
 Visualizer: https://github.com/elijahkash/push_swap_gui
 # Bonus
